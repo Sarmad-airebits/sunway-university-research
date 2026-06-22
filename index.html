@@ -221,7 +221,20 @@ select:focus,input:focus{border-color:var(--pri);}
     </select>
   </div>
   <div class="fg"><label>Nationality</label>
-    <select><option value="">— Select —</option><option>Malaysian</option><option>Other (residing in Malaysia)</option></select>
+  <select id="natSelect" onchange="toggleOtherNat()">
+    <option value="">— Select —</option>
+    <option>Malay</option>
+    <option>Pakistani</option>
+    <option>Indonesian</option>
+    <option>Chinese</option>
+    <option>Indian</option>
+    <option>Bangladeshi</option>
+    <option>Other</option>
+  </select>
+  </div>
+  <div class="fg hidden" id="natOther">
+    <label>If you have chosen other — please specify</label>
+    <input type="text" id="natOtherVal" placeholder="Please specify your nationality">
   </div>
   <div class="fg"><label>Level of education</label>
     <select><option value="">— Select —</option><option>Foundation / Pre-university</option><option>Undergraduate</option><option>Postgraduate</option><option>Other</option></select>
@@ -696,6 +709,17 @@ function buildScales(scr){
     });
     el.dataset.built='1';
   });
+}
+
+function toggleOtherNat(){
+  const sel = document.getElementById('natSelect').value;
+  const field = document.getElementById('natOther');
+  if(sel === 'Other'){
+    field.classList.remove('hidden');
+  } else {
+    field.classList.add('hidden');
+    document.getElementById('natOtherVal').value = '';
+  }
 }
 
 updC();
