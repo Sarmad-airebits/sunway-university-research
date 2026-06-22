@@ -1,0 +1,704 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AR Filters & Self-Perception Study</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap');
+:root{
+  --bg:#F7F5F2;--sur:#fff;--pri:#3D2C8D;--acc:#C084FC;--al:#EDE9FE;
+  --txt:#1A1A2E;--mut:#6B6B80;--bdr:#E2DFF0;
+  --ok:#22C55E;--okl:#DCFCE7;--wn:#F59E0B;--wnl:#FEF3C7;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:0 14px 80px;}
+header{width:100%;max-width:720px;padding:20px 0 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.logo{font-family:'DM Serif Display',serif;font-size:.95rem;color:var(--pri);}
+.hrow{display:flex;gap:6px;}
+.pill{display:inline-flex;align-items:center;gap:4px;font-size:.68rem;font-weight:700;padding:5px 10px;border-radius:99px;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;}
+.pc{background:var(--al);color:var(--pri);} .pd{background:var(--okl);color:#166534;}
+.pw{width:100%;max-width:720px;margin-top:14px;}
+.pt{width:100%;height:5px;background:var(--bdr);border-radius:99px;overflow:hidden;}
+.pf{height:100%;background:linear-gradient(90deg,var(--pri),var(--acc));border-radius:99px;transition:width .5s;}
+.pm{display:flex;justify-content:space-between;margin-top:4px;font-size:.68rem;color:var(--mut);}
+.tpip{display:inline-flex;align-items:center;gap:4px;background:var(--al);color:var(--pri);font-weight:700;font-size:.67rem;padding:2px 8px;border-radius:99px;}
+.card{background:var(--sur);border-radius:14px;box-shadow:0 4px 28px rgba(61,44,141,.09);width:100%;max-width:720px;margin-top:16px;padding:34px 40px;animation:fu .3s ease;}
+@keyframes fu{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+.tag{display:inline-block;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--pri);background:var(--al);padding:3px 9px;border-radius:99px;margin-bottom:10px;}
+h1{font-family:'DM Serif Display',serif;font-size:1.7rem;line-height:1.2;margin-bottom:10px;}
+h2{font-family:'DM Serif Display',serif;font-size:1.25rem;margin-bottom:9px;}
+p{font-size:.9rem;line-height:1.78;color:#333;margin-bottom:8px;}
+.ib{background:#F5F3FF;border-left:3px solid var(--pri);border-radius:8px;padding:12px 16px;margin:12px 0;font-size:.84rem;color:var(--pri);line-height:1.65;}
+.wb{background:var(--wnl);border-left:3px solid var(--wn);border-radius:8px;padding:12px 16px;margin:12px 0;font-size:.84rem;color:#92400E;line-height:1.65;}
+.sb{background:var(--okl);border-left:3px solid var(--ok);border-radius:8px;padding:12px 16px;margin:12px 0;font-size:.84rem;color:#166534;line-height:1.65;}
+.fg{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+label{font-size:.84rem;font-weight:500;}
+select,input[type=number]{padding:9px 12px;border:1.5px solid var(--bdr);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;background:var(--bg);outline:none;transition:border-color .2s;width:100%;}
+select:focus,input:focus{border-color:var(--pri);}
+.rg{display:flex;flex-direction:column;gap:7px;}
+.ro{display:flex;align-items:center;gap:9px;font-size:.87rem;cursor:pointer;}
+.ro input{accent-color:var(--pri);}
+.ci{display:flex;flex-direction:column;gap:9px;margin:14px 0;}
+.cit{display:flex;align-items:flex-start;gap:9px;font-size:.87rem;line-height:1.55;}
+.cit input[type=checkbox]{width:16px;height:16px;margin-top:2px;accent-color:var(--pri);flex-shrink:0;cursor:pointer;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px 24px;border-radius:99px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;border:none;transition:all .2s;}
+.bp{background:var(--pri);color:#fff;} .bp:hover{background:#2d1f6e;transform:translateY(-1px);} .bp:disabled{background:#b0a8d0;cursor:not-allowed;transform:none;}
+.bo{background:transparent;color:var(--pri);border:1.5px solid var(--pri);} .bo:hover{background:var(--al);}
+.br{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap;}
+.divider{height:1px;background:var(--bdr);margin:16px 0;}
+
+/* Condition badge */
+.cond-wrap{display:flex;flex-direction:column;gap:10px;margin:16px 0;}
+.cond-card{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:12px;border:2px solid var(--bdr);background:var(--bg);}
+.cond-card.assigned{border-color:var(--pri);background:var(--al);box-shadow:0 0 0 3px rgba(192,132,252,.3);}
+.cond-icon{font-size:1.6rem;flex-shrink:0;}
+.cond-info strong{display:block;font-size:.92rem;color:var(--pri);}
+.cond-info span{font-size:.8rem;color:var(--mut);}
+.you-badge{display:inline-block;background:var(--pri);color:#fff;font-size:.6rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:99px;margin-left:6px;vertical-align:middle;}
+
+/* QR card */
+.qrc{background:linear-gradient(135deg,#F5F3FF,#fdf4ff);border:2px solid var(--acc);border-radius:14px;padding:22px;text-align:center;margin:16px 0;}
+.qrbox{width:140px;height:140px;background:#fff;border:2px solid var(--bdr);border-radius:10px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:4rem;}
+.qrt{font-weight:700;font-size:.95rem;color:var(--pri);margin-bottom:4px;}
+.qrs{font-size:.77rem;color:var(--mut);}
+
+/* Steps */
+.si{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;}
+.sn{width:24px;height:24px;border-radius:50%;background:var(--pri);color:#fff;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.st{font-size:.88rem;line-height:1.65;}
+
+/* Upload */
+.uz{border:2px dashed var(--bdr);border-radius:11px;padding:22px 14px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg);position:relative;overflow:hidden;}
+.uz:hover{border-color:var(--acc);background:#fdf4ff;} .uz.hf{border-color:var(--ok);background:var(--okl);}
+.uz input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+
+/* Timer */
+.tw{display:flex;flex-direction:column;align-items:center;margin:18px 0;}
+.tr{width:120px;height:120px;position:relative;}
+.tr svg{transform:rotate(-90deg);}
+.tr circle.tk{fill:none;stroke:var(--bdr);stroke-width:8;}
+.tr circle.tf{fill:none;stroke:var(--pri);stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset 1s linear;}
+.tt{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--pri);text-align:center;line-height:1;}
+.ts{font-size:.58rem;font-family:'DM Sans',sans-serif;color:var(--mut);margin-top:2px;}
+
+/* Trial tracker */
+.ttrack{display:flex;align-items:center;gap:8px;margin:12px 0 16px;}
+.tdot{width:32px;height:32px;border-radius:50%;border:2px solid var(--bdr);background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:var(--mut);transition:all .3s;flex-shrink:0;}
+.tdot.done{background:var(--ok);border-color:var(--ok);color:#fff;} .tdot.active{background:var(--pri);border-color:var(--pri);color:#fff;}
+.tline{flex:1;height:2px;background:var(--bdr);}
+
+/* Likert */
+.sst{font-weight:700;font-size:.75rem;color:var(--pri);text-transform:uppercase;letter-spacing:.07em;margin:18px 0 10px;}
+.lg{margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--bdr);}
+.lg:last-of-type{border-bottom:none;}
+.lq{font-size:.87rem;font-weight:500;margin-bottom:9px;line-height:1.55;}
+.ls{display:flex;gap:4px;}
+.lo{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;}
+.lb{width:34px;height:34px;border-radius:50%;border:2px solid var(--bdr);background:var(--bg);cursor:pointer;transition:all .15s;font-size:.77rem;font-weight:600;color:var(--mut);display:flex;align-items:center;justify-content:center;}
+.lb:hover{border-color:var(--acc);background:#fdf4ff;} .lb.act{background:var(--pri);border-color:var(--pri);color:#fff;}
+.lo span{font-size:.57rem;color:var(--mut);text-align:center;line-height:1.2;}
+.sleg{font-size:.72rem;color:var(--mut);margin-bottom:11px;}
+
+/* Modal */
+.mo{position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:1000;padding:14px;}
+.mb{background:#fff;border-radius:14px;padding:26px;max-width:440px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.2);animation:fu .3s ease;}
+.mb h3{font-family:'DM Serif Display',serif;font-size:1.15rem;margin-bottom:12px;}
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:16px;}
+.sc{background:var(--bg);border-radius:9px;padding:11px 12px;text-align:center;}
+.snum{font-family:'DM Serif Display',serif;font-size:1.9rem;color:var(--pri);line-height:1;}
+.slbl{font-size:.68rem;color:var(--mut);margin-top:2px;}
+.mr{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--bdr);font-size:.8rem;}
+.mr:last-child{border:none;} .mr span:first-child{color:var(--mut);} .mr span:last-child{font-weight:600;}
+
+.ci-icon{width:64px;height:64px;border-radius:50%;background:var(--okl);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 14px;}
+.hidden{display:none!important;}
+@media(max-width:560px){.card{padding:22px 16px;}h1{font-size:1.35rem;}.br{flex-direction:column;}}
+</style>
+</head>
+<body>
+
+<!-- Counter Modal -->
+<div class="mo hidden" id="cntM">
+  <div class="mb">
+    <h3>📊 Study Response Tracker</h3>
+    <div class="sg">
+      <div class="sc"><div class="snum" id="stT">0</div><div class="slbl">Total Started</div></div>
+      <div class="sc"><div class="snum" id="stC">0</div><div class="slbl">Completed</div></div>
+      <div class="sc"><div class="snum" id="stB">0</div><div class="slbl">Beautifying</div></div>
+      <div class="sc"><div class="snum" id="stN">0</div><div class="slbl">Non-Beautifying</div></div>
+    </div>
+    <div class="mr"><span>Control (no-filter)</span><span id="stNF">0</span></div>
+    <div class="mr"><span>Target sample</span><span>180 participants (60 per condition)</span></div>
+    <div class="mr"><span>Design</span><span>2×2 Mixed Factorial</span></div>
+    <div class="mr"><span>Trial 1</span><span>Assigned condition (beauty / non-beauty / no-filter)</span></div>
+    <div class="mr"><span>Trial 2</span><span>No-filter baseline</span></div>
+    <div class="mr"><span>Selfie photos</span><span>Deleted after compliance check</span></div>
+    <div class="mr"><span>Storage</span><span>Qualtrics encrypted server</span></div>
+    <p style="font-size:.7rem;color:var(--mut);margin-top:10px;">* Counter is session-based for this prototype. Live Qualtrics version logs responses automatically.</p>
+    <div class="br" style="margin-top:12px;">
+      <button class="btn bo" onclick="resetCnt()">Reset</button>
+      <button class="btn bp" onclick="document.getElementById('cntM').classList.add('hidden')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Data Modal -->
+<div class="mo hidden" id="datM">
+  <div class="mb">
+    <h3>🔒 Data Recording & Privacy</h3>
+    <div class="mr"><span>Anonymity</span><span>Fully anonymous</span></div>
+    <div class="mr"><span>Participant ID</span><span>Auto-generated code</span></div>
+    <div class="mr"><span>Selfie photos</span><span>Deleted after compliance check</span></div>
+    <div class="mr"><span>Timestamps</span><span>Recorded per trial</span></div>
+    <div class="mr"><span>Condition assigned</span><span>Beautifying / Non-Beautifying / No-Filter</span></div>
+    <div class="mr"><span>SSES (20 items)</span><span>Stored per trial</span></div>
+    <div class="mr"><span>MBSRQ-AE (7 items)</span><span>Stored per trial</span></div>
+    <div class="mr"><span>Retention</span><span>5 years (university ethics policy)</span></div>
+    <div class="mr"><span>Access</span><span>Researcher & supervisor only</span></div>
+    <div class="br" style="margin-top:12px;"><button class="btn bp" onclick="document.getElementById('datM').classList.add('hidden')">Close</button></div>
+  </div>
+</div>
+
+<header>
+  <div class="logo">✦ AR Filters & Self-Perception — Sunway University</div>
+  <div class="hrow">
+    <button class="pill pc" onclick="openCnt()">📊 Responses: <span id="hCnt">0</span></button>
+    <button class="pill pd" onclick="document.getElementById('datM').classList.remove('hidden')">🔒 Data</button>
+  </div>
+</header>
+
+<div class="pw">
+  <div class="pt"><div class="pf" id="pFill" style="width:3%"></div></div>
+  <div class="pm"><span id="sLbl">Step 1 of 11</span><span class="tpip" id="sPh">Introduction</span></div>
+</div>
+
+<!-- S0: Info Sheet -->
+<div class="card" id="s0">
+  <div class="tag">Participant Information Sheet</div>
+  <h1>AR Filters &amp; Self-Perception Study</h1>
+  <p>You are invited to participate in a psychology research study at Sunway University examining how augmented reality (AR) social media filters influence self-perception and appearance satisfaction among young adults in Malaysia.</p>
+  <div class="ib">⏱ ~20–25 min &nbsp;|&nbsp; 🔁 2 Trials &nbsp;|&nbsp; 📱 Smartphone required &nbsp;|&nbsp; 🔒 Fully anonymous</div>
+  <p><strong>What will you do?</strong> You will be randomly assigned to one of three conditions: a beautifying AR filter, a non-beautifying AR filter, or a no-filter control. You will complete <strong>two trials</strong> — Trial 1 using your assigned condition, and Trial 2 without any filter. Questionnaires are completed after each trial.</p>
+  <p><strong>Selfie verification:</strong> You will be asked to upload your selfie after each trial to confirm the task was completed. Photos are deleted immediately after verification — never stored or shared.</p>
+  <p><strong>Risks:</strong> Minimal. You may withdraw at any time without penalty.</p>
+  <p><strong>Contact:</strong> Principal Investigator — research@sunway.edu.my</p>
+  <div class="br"><button class="btn bp" onclick="goTo(1)">I've Read This — Continue →</button></div>
+</div>
+
+<!-- S1: Consent -->
+<div class="card hidden" id="s1">
+  <div class="tag">Informed Consent</div>
+  <h2>Please confirm your agreement</h2>
+  <p>Check each box to confirm your agreement before proceeding.</p>
+  <div class="ci">
+    <label class="cit"><input type="checkbox" class="cc" onchange="chkC()"><span>I have read and understood the Participant Information Sheet.</span></label>
+    <label class="cit"><input type="checkbox" class="cc" onchange="chkC()"><span>I understand participation is voluntary and I may withdraw at any time without penalty.</span></label>
+    <label class="cit"><input type="checkbox" class="cc" onchange="chkC()"><span>I understand my responses are anonymous and used for research purposes only.</span></label>
+    <label class="cit"><input type="checkbox" class="cc" onchange="chkC()"><span>I consent to completing two trials: Trial 1 with my assigned condition and Trial 2 without any filter.</span></label>
+    <label class="cit"><input type="checkbox" class="cc" onchange="chkC()"><span>I consent to uploading a selfie per trial for compliance verification, which will be deleted immediately after.</span></label>
+    <label class="cit"><input type="checkbox" class="cc" onchange="chkC()"><span>I confirm I am aged 18–30, reside in Malaysia, and have a camera-enabled smartphone.</span></label>
+    <label class="cit"><input type="checkbox" class="cc" onchange="chkC()"><span>I confirm I have previously used social media platforms with AR filters (e.g. Instagram or TikTok).</span></label>
+  </div>
+  <div class="br">
+    <button class="btn bo" onclick="goTo(0)">← Back</button>
+    <button class="btn bp" id="cBtn" disabled onclick="goTo(2)">I Agree & Consent →</button>
+  </div>
+</div>
+
+<!-- S2: Demographics -->
+<div class="card hidden" id="s2">
+  <div class="tag">Step 3 of 11 — Demographic Questionnaire</div>
+  <h2>About You</h2>
+  <p>All information is collected anonymously and stored securely.</p>
+  <div class="fg"><label>Age</label><input type="number" min="18" max="30" placeholder="18–30"></div>
+  <div class="fg"><label>Gender</label>
+    <select>
+      <option value="">— Select —</option>
+      <option>Female</option><option>Male</option>
+      <option>Non-binary / Gender diverse</option><option>Prefer not to say</option>
+    </select>
+  </div>
+  <div class="fg"><label>Nationality</label>
+    <select><option value="">— Select —</option><option>Malaysian</option><option>Other (residing in Malaysia)</option></select>
+  </div>
+  <div class="fg"><label>Level of education</label>
+    <select><option value="">— Select —</option><option>Foundation / Pre-university</option><option>Undergraduate</option><option>Postgraduate</option><option>Other</option></select>
+  </div>
+  <div class="fg"><label>How often do you use social media filters?</label>
+    <select><option value="">— Select —</option><option>Never</option><option>Rarely (≤1×/month)</option><option>Sometimes (few times/month)</option><option>Often (few times/week)</option><option>Very often (daily)</option></select>
+  </div>
+  <div class="fg"><label>Primary social media platform</label>
+    <div class="rg">
+      <label class="ro"><input type="radio" name="plat"> Instagram</label>
+      <label class="ro"><input type="radio" name="plat"> TikTok</label>
+      <label class="ro"><input type="radio" name="plat"> Snapchat</label>
+      <label class="ro"><input type="radio" name="plat"> Facebook</label>
+      <label class="ro"><input type="radio" name="plat"> I do not use social media</label>
+    </div>
+  </div>
+  <div class="br">
+    <button class="btn bo" onclick="goTo(1)">← Back</button>
+    <button class="btn bp" onclick="assignAndGo()">Continue →</button>
+  </div>
+</div>
+
+<!-- S3: Assignment -->
+<div class="card hidden" id="s3">
+  <div class="tag">Step 4 of 11 — Condition Assignment</div>
+  <h2>Your assigned condition</h2>
+  <p>You have been <strong>randomly assigned</strong> to the following experimental condition:</p>
+
+  <div class="cond-wrap">
+    <div class="cond-card" id="card-b">
+      <div class="cond-icon">✦</div>
+      <div class="cond-info">
+        <strong>Beautifying Filter <span class="you-badge hidden" id="you-b">YOUR CONDITION</span></strong>
+        <span>Enhances facial features — skin smoothing, complexion brightening, facial refinement</span>
+      </div>
+    </div>
+    <div class="cond-card" id="card-n">
+      <div class="cond-icon">◦</div>
+      <div class="cond-info">
+        <strong>Non-Beautifying Filter <span class="you-badge hidden" id="you-n">YOUR CONDITION</span></strong>
+        <span>Entertainment-oriented effect — does not enhance attractiveness</span>
+      </div>
+    </div>
+    <div class="cond-card" id="card-c">
+      <div class="cond-icon">○</div>
+      <div class="cond-info">
+        <strong>No Filter — Control <span class="you-badge hidden" id="you-c">YOUR CONDITION</span></strong>
+        <span>No AR filter applied — natural, unmodified appearance</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ib" id="condMsg"></div>
+  <div class="ib">📋 <strong>Study overview:</strong> Trial 1 = your assigned condition above &nbsp;·&nbsp; Trial 2 = no-filter baseline &nbsp;·&nbsp; Questionnaires after each trial &nbsp;·&nbsp; Your condition and timestamps are recorded for validity.</div>
+  <div class="br">
+    <button class="btn bo" onclick="goTo(2)">← Back</button>
+    <button class="btn bp" onclick="startTrial(1)">Begin Trial 1 →</button>
+  </div>
+</div>
+
+<!-- S4: Trial Task -->
+<div class="card hidden" id="s4">
+  <div class="tag" id="t4tag">Trial 1 of 2 — Filter Task</div>
+  <h2 id="t4h">Complete the Filter Task</h2>
+  <div id="ttrack"></div>
+  <p id="t4desc"></p>
+
+  <!-- QR area (hidden for no-filter and trial 2) -->
+  <div id="qrArea" class="qrc">
+    <div class="qrbox">▦</div>
+    <div class="qrt" id="qrTitle"></div>
+    <div class="qrs">Scan with your phone camera — opens the filter directly in Instagram / TikTok</div>
+  </div>
+
+  <div id="stepsArea">
+    <div class="si"><div class="sn">1</div><div class="st" id="step1txt"></div></div>
+    <div class="si"><div class="sn">2</div><div class="st">Ensure your full face is clearly visible in good lighting. Take <strong>one selfie</strong>.</div></div>
+    <div class="si"><div class="sn">3</div><div class="st">Save the photo to your camera roll, then upload it below as compliance verification.</div></div>
+  </div>
+
+  <div class="divider"></div>
+  <p style="font-weight:600;font-size:.86rem;margin-bottom:7px;">Upload your selfie <span style="color:var(--mut);font-weight:400;">(required)</span></p>
+  <div class="uz" id="uz1">
+    <input type="file" accept="image/*" onchange="handleUp(event)">
+    <div style="font-size:1.8rem;margin-bottom:5px;" id="uzIcon">📸</div>
+    <div style="font-size:.83rem;color:var(--mut);" id="uzTxt"><strong>Tap to select your selfie</strong><br>JPG or PNG</div>
+  </div>
+  <div id="upOk" class="sb hidden">✅ Uploaded · Timestamp recorded: <strong id="upTs"></strong></div>
+  <div class="wb">🔒 Your photo is used only to verify task completion. It is deleted immediately after the compliance check.</div>
+
+  <div class="divider"></div>
+  <button class="btn bo" style="font-size:.79rem;" onclick="showFb()">Can't upload? Use timed fallback instead</button>
+  <div id="fbArea" class="hidden" style="margin-top:12px;">
+    <div class="wb">⚠️ Keep this page open. The 60-second timer must complete before you can proceed.</div>
+    <div class="tw">
+      <div class="tr">
+        <svg width="120" height="120" viewBox="0 0 120 120"><circle class="tk" cx="60" cy="60" r="52"/><circle class="tf" id="fbC" cx="60" cy="60" r="52" stroke-dasharray="326.73" stroke-dashoffset="0"/></svg>
+        <div class="tt"><span id="fbTxt">1:00</span><div class="ts">remaining</div></div>
+      </div>
+    </div>
+    <div style="text-align:center;"><button class="btn bp" id="fbBtn" onclick="startFb()">▶ Start Timer</button></div>
+  </div>
+
+  <div class="br" style="margin-top:18px;">
+    <button class="btn bp" id="pBtn" disabled onclick="goToView()">View Selfie for 60 Seconds →</button>
+  </div>
+</div>
+
+<!-- S5: Viewing Timer -->
+<div class="card hidden" id="s5">
+  <div class="tag" id="t5tag">Trial 1 of 2 — Viewing Period</div>
+  <h2 style="text-align:center;">View Your Selfie Now</h2>
+  <p style="text-align:center;">Look carefully at your selfie on your phone for the full 60 seconds. Pay attention to your appearance in the image.</p>
+  <div class="tw">
+    <div class="tr">
+      <svg width="120" height="120" viewBox="0 0 120 120"><circle class="tk" cx="60" cy="60" r="52"/><circle class="tf" id="mC" cx="60" cy="60" r="52" stroke-dasharray="326.73" stroke-dashoffset="0"/></svg>
+      <div class="tt"><span id="mTxt">1:00</span><div class="ts">remaining</div></div>
+    </div>
+  </div>
+  <p style="text-align:center;font-size:.8rem;color:var(--mut);">60-second viewing period consistent with Mills et al. (2018) and Dijkslag et al. (2024).</p>
+  <div class="br" style="justify-content:center;margin-top:12px;">
+    <button class="btn bp hidden" id="contQ" onclick="goToQ()">Continue to Questionnaire →</button>
+  </div>
+</div>
+
+<!-- S6: Manipulation Check -->
+<div class="card hidden" id="s6">
+  <div class="tag" id="t6tag">Trial 1 of 2 — Manipulation Check</div>
+  <h2>About the Image You Just Viewed</h2>
+  <p>Please rate the following based on the selfie you just viewed. There are no right or wrong answers.</p>
+  <p class="sleg">1 = Strongly Disagree &nbsp;·&nbsp; 3 = Neutral &nbsp;·&nbsp; 5 = Strongly Agree</p>
+  <div class="divider"></div>
+  <div class="lg"><div class="lq">1. The image made me look more physically attractive.</div><div class="ls" id="mc1"></div></div>
+  <div class="lg"><div class="lq">2. The image had digital enhancements applied (e.g. skin smoothing, facial refinement).</div><div class="ls" id="mc2"></div></div>
+  <div class="lg"><div class="lq">3. The image was primarily for entertainment rather than attractiveness enhancement.</div><div class="ls" id="mc3"></div></div>
+  <div class="lg"><div class="lq">4. The image appeared digitally altered.</div><div class="ls" id="mc4"></div></div>
+  <div class="lg"><div class="lq">5. The image looked natural and unmodified.</div><div class="ls" id="mc5"></div></div>
+  <div class="br"><button class="btn bp" onclick="goTo(7)">Continue to Self-Perception Scale →</button></div>
+</div>
+
+<!-- S7: SSES -->
+<div class="card hidden" id="s7">
+  <div class="tag" id="t7tag">Trial 1 of 2 — Self-Perception</div>
+  <h2>How do you feel about your appearance right now?</h2>
+  <p>Rate each item according to how you feel <em>at this moment</em>, immediately after viewing your selfie. Focus on your facial appearance and how you look.</p>
+  <p class="sleg">1 = Not at all &nbsp;·&nbsp; 2 = A little bit &nbsp;·&nbsp; 3 = Somewhat &nbsp;·&nbsp; 4 = Very much &nbsp;·&nbsp; 5 = Extremely</p>
+  <p style="font-size:.71rem;color:var(--mut);font-style:italic;margin-bottom:4px;">Appearance Self-Esteem subscale — State Self-Esteem Scale (SSES; Heatherton &amp; Polivy, 1991) · α > .80</p>
+  <div class="divider"></div>
+  <div class="lg"><div class="lq">1. I feel unattractive right now. <em style="font-size:.74rem;color:var(--mut)">(R)</em></div><div class="ls" id="p14"></div></div>
+  <div class="lg"><div class="lq">2. I feel pleased with my appearance right now.</div><div class="ls" id="p15"></div></div>
+  <div class="lg"><div class="lq">3. I am worried about how my face looks. <em style="font-size:.74rem;color:var(--mut)">(R)</em></div><div class="ls" id="p16"></div></div>
+  <div class="lg"><div class="lq">4. I feel that my face looks right.</div><div class="ls" id="p17"></div></div>
+  <div class="lg"><div class="lq">5. I feel embarrassed about my appearance. <em style="font-size:.74rem;color:var(--mut)">(R)</em></div><div class="ls" id="p18"></div></div>
+  <div class="lg"><div class="lq">6. I feel comfortable with the way I look.</div><div class="ls" id="p19"></div></div>
+  <div class="lg"><div class="lq">7. I feel satisfied with my facial appearance right now.</div><div class="ls" id="p20"></div></div>
+  <p style="font-size:.69rem;color:var(--mut);margin-top:5px;"><em>(R) = Reverse-scored. Higher scores = more positive appearance self-esteem.</em></p>
+  <div class="br"><button class="btn bp" onclick="goTo(8)">Continue to Appearance Satisfaction →</button></div>
+</div>
+
+<!-- S8: MBSRQ-AE -->
+<div class="card hidden" id="s8">
+  <div class="tag" id="t8tag">Trial 1 of 2 — Appearance Satisfaction</div>
+  <h2>Your appearance right now</h2>
+  <p>Indicate how much you agree or disagree with each statement <em>at this moment</em>.</p>
+  <p class="sleg">1 = Definitely Disagree &nbsp;·&nbsp; 3 = Neither &nbsp;·&nbsp; 5 = Definitely Agree</p>
+  <p style="font-size:.71rem;color:var(--mut);font-style:italic;margin-bottom:4px;">Appearance Evaluation (AE) subscale — MBSRQ (Cash, 2000) · α > .80</p>
+  <div class="divider"></div>
+  <div class="lg"><div class="lq">1. I like my looks just the way they are.</div><div class="ls" id="ae1"></div></div>
+  <div class="lg"><div class="lq">2. I wish I looked better. <em style="font-size:.74rem;color:var(--mut)">(R)</em></div><div class="ls" id="ae2"></div></div>
+  <div class="lg"><div class="lq">3. I'm physically unattractive. <em style="font-size:.74rem;color:var(--mut)">(R)</em></div><div class="ls" id="ae3"></div></div>
+  <div class="lg"><div class="lq">4. Most people would consider me good-looking.</div><div class="ls" id="ae4"></div></div>
+  <div class="lg"><div class="lq">5. I like the way I look without my clothes.</div><div class="ls" id="ae5"></div></div>
+  <div class="lg"><div class="lq">6. I dislike my physique. <em style="font-size:.74rem;color:var(--mut)">(R)</em></div><div class="ls" id="ae6"></div></div>
+  <div class="lg"><div class="lq">7. I'm not happy with the way I look. <em style="font-size:.74rem;color:var(--mut)">(R)</em></div><div class="ls" id="ae7"></div></div>
+  <p style="font-size:.69rem;color:var(--mut);margin-top:5px;"><em>(R) = Reverse-scored. Higher scores = greater appearance satisfaction.</em></p>
+  <div class="br"><button class="btn bp" id="subBtn" onclick="submitTrial()">— Submit —</button></div>
+</div>
+
+<!-- S9: Trial 1 Complete -->
+<div class="card hidden" id="s9">
+  <div style="text-align:center;">
+    <div style="font-size:2.2rem;margin-bottom:8px;">✓</div>
+    <div class="tag">Trial 1 Complete</div>
+    <h2>Trial 1 responses saved</h2>
+  </div>
+  <div class="ib" style="margin-top:14px;">You will now complete <strong>Trial 2</strong> — the same procedure but <strong>without any filter</strong>. This serves as your personal no-filter baseline, allowing within-person comparison of your responses.</div>
+  <p>Please take a short 2-minute break before continuing.</p>
+  <div class="br" style="justify-content:center;margin-top:16px;">
+    <button class="btn bp" onclick="startTrial(2)">Begin Trial 2 — No Filter →</button>
+  </div>
+</div>
+
+<!-- S10: Debrief -->
+<div class="card hidden" id="s10">
+  <div class="ci-icon">✓</div>
+  <div style="text-align:center;">
+    <div class="tag">Debriefing & Study Completion</div>
+    <h2>Both Trials Complete — Thank You!</h2>
+  </div>
+  <div class="ib" style="margin-top:14px;"><strong>Purpose of this study:</strong> This research examined whether exposure to beautifying AR filters, non-beautifying AR filters, or no filter produces measurable differences in state self-perception and appearance satisfaction among young adults in Malaysia. The State Self-Esteem Scale (Heatherton & Polivy, 1991) and the Appearance Evaluation subscale of the MBSRQ (Cash, 2000) were used to capture your immediate responses across both trials.</div>
+  <p>You were assigned to the <strong id="debCond"></strong>. AR filters apply digital enhancements that do not represent realistic appearance standards. Any temporary feelings of appearance-related discomfort are expected to subside shortly.</p>
+  <p>Your selfie photos have been deleted. Only your anonymous questionnaire responses are retained for analysis.</p>
+  <div class="wb"><strong>If you feel distressed:</strong><br>📞 Befrienders KL: 03-7627 2929 (24 hrs)<br>🏫 Sunway University Counselling: counselling@sunway.edu.my<br>📧 Researcher: research@sunway.edu.my</div>
+  <p>Thank you for your valuable contribution to research on digital well-being and self-perception in Malaysia.</p>
+  <div class="br" style="justify-content:center;"><button class="btn bp" onclick="window.location.reload()">Start New Session</button></div>
+</div>
+
+<script>
+let _store = {t:0,c:0,b:0,n:0,nf:0};
+function getD(){return _store;}
+function setD(d){_store=Object.assign({},d);}
+function updC(){
+  const d=getD();
+  document.getElementById('hCnt').textContent=d.c;
+  document.getElementById('stT').textContent=d.t;
+  document.getElementById('stC').textContent=d.c;
+  document.getElementById('stB').textContent=d.b;
+  document.getElementById('stN').textContent=d.n;
+  document.getElementById('stNF').textContent=d.nf||0;
+}
+function openCnt(){updC();document.getElementById('cntM').classList.remove('hidden');}
+function resetCnt(){setD({t:0,c:0,b:0,n:0,nf:0});updC();}
+
+const CIRC=326.73;
+let cond=null, trial=1, mTmr=null, fbTmr=null;
+const participantId = 'P-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,7);
+const lastUploadTs = {1:null, 2:null};
+
+function setProgress(pct,lbl,ph){
+  document.getElementById('pFill').style.width=pct+'%';
+  document.getElementById('sLbl').textContent=lbl;
+  document.getElementById('sPh').textContent=ph;
+}
+
+function goTo(n){
+  document.querySelectorAll('.card').forEach(c=>c.classList.add('hidden'));
+  const el=document.getElementById('s'+n);
+  if(el){el.classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
+  const steps={
+    0:[3,'Step 1 of 11','Participant Information Sheet'],
+    1:[10,'Step 2 of 11','Informed Consent'],
+    2:[18,'Step 3 of 11','Demographic Questionnaire'],
+    3:[26,'Step 4 of 11','Condition Assignment'],
+    9:[88,'Trial 1 Complete','Preparing Trial 2'],
+    10:[100,'Complete','Debriefing']
+  };
+  if(steps[n]) setProgress(...steps[n]);
+  if([6,7,8].includes(parseInt(n))) buildScales(parseInt(n));
+  updC();
+}
+
+function chkC(){
+  const a=document.querySelectorAll('.cc');
+  document.getElementById('cBtn').disabled=!Array.from(a).every(c=>c.checked);
+}
+
+function assignAndGo(){
+  const d=getD(); d.t++; setD(d);
+  const r=Math.random();
+  cond = r<0.333 ? 'beauty' : r<0.666 ? 'non' : 'control';
+
+  // Reset all cards
+  ['card-b','card-n','card-c'].forEach(id=>{
+    document.getElementById(id).classList.remove('assigned');
+  });
+  ['you-b','you-n','you-c'].forEach(id=>{
+    document.getElementById(id).classList.add('hidden');
+  });
+
+  // Highlight assigned
+  const map={beauty:'b', non:'n', control:'c'};
+  const k=map[cond];
+  document.getElementById('card-'+k).classList.add('assigned');
+  document.getElementById('you-'+k).classList.remove('hidden');
+
+  const msgs={
+    beauty:'✦ You have been assigned to the <strong>Beautifying Filter</strong> condition. The researcher will provide you with a QR code to access your assigned filter on Instagram or TikTok.',
+    non:'◦ You have been assigned to the <strong>Non-Beautifying Filter</strong> condition. The researcher will provide you with a QR code to access your assigned filter on Instagram or TikTok.',
+    control:'○ You have been assigned to the <strong>No-Filter Control</strong> condition. You will take a selfie using your phone\'s camera without applying any AR filter.'
+  };
+  document.getElementById('condMsg').innerHTML=msgs[cond];
+  goTo(3);
+}
+
+function startTrial(n){
+  trial=n;
+  const isTrial2=(n===2);
+  const isControl=(cond==='control');
+  const showQR=!isTrial2 && !isControl;
+
+  // Reset upload
+  document.getElementById('uz1').classList.remove('hf');
+  document.getElementById('upOk').classList.add('hidden');
+  document.getElementById('uzIcon').textContent=isTrial2?'📷':'📸';
+  document.getElementById('uzTxt').innerHTML='<strong>Tap to select your selfie</strong><br>JPG or PNG';
+  document.getElementById('pBtn').disabled=true;
+  document.getElementById('fbArea').classList.add('hidden');
+
+  // QR card visibility
+  document.getElementById('qrArea').style.display=showQR?'block':'none';
+
+  // Labels
+  const tl='Trial '+n+' of 2';
+  document.getElementById('t4tag').textContent=tl+(isTrial2?' — No-Filter Task':isControl?' — No-Filter Task':' — Filter Task');
+  document.getElementById('t5tag').textContent=tl+' — Viewing Period';
+  document.getElementById('t6tag').textContent=tl+' — Manipulation Check';
+  document.getElementById('t7tag').textContent=tl+' — Self-Perception (SSES)';
+  document.getElementById('t8tag').textContent=tl+' — Appearance Satisfaction (MBSRQ-AE)';
+  document.getElementById('subBtn').textContent=isTrial2?'Submit Final Responses →':'Save & Continue to Trial 2 →';
+
+  if(isTrial2){
+    document.getElementById('t4h').textContent='Trial 2: Take a No-Filter Selfie';
+    document.getElementById('t4desc').textContent='For this trial, use your phone\'s front camera without applying any AR filter. Take one selfie in similar lighting to Trial 1.';
+    document.getElementById('step1txt').textContent='Open your phone\'s front-facing camera without activating any filter.';
+  } else if(isControl){
+    document.getElementById('t4h').textContent='No-Filter Task';
+    document.getElementById('t4desc').textContent='You have been assigned to the no-filter control condition. Use your phone\'s front camera without applying any AR filter.';
+    document.getElementById('step1txt').textContent='Open your phone\'s front-facing camera without activating any filter.';
+  } else {
+    const condLabel=cond==='beauty'?'Beautifying':'Non-Beautifying';
+    document.getElementById('t4h').textContent='Scan QR Code & Take Your Selfie';
+    document.getElementById('t4desc').textContent='The researcher will hand you a QR code card. Scan it with your phone to open your assigned filter directly in Instagram or TikTok.';
+    document.getElementById('qrTitle').textContent=condLabel+' Filter — scan to open';
+    document.getElementById('step1txt').textContent='Scan the QR code card provided by the researcher to open your assigned filter in Instagram or TikTok.';
+  }
+
+  // Trial tracker
+  const el=document.getElementById('ttrack');
+  el.innerHTML='<p style="font-size:.78rem;color:var(--mut);margin-bottom:6px;">Trial progress:</p><div class="ttrack">'
+    +[1,2].map(i=>'<div class="tdot'+(i<n?' done':i===n?' active':'')+'">'+( i<n?'✓':i)+'</div>'+(i<2?'<div class="tline"></div>':'')).join('')+'</div>';
+
+  // Reset scales
+  const allIds=['mc1','mc2','mc3','mc4','mc5','p14','p15','p16','p17','p18','p19','p20','ae1','ae2','ae3','ae4','ae5','ae6','ae7'];
+  allIds.forEach(id=>{const el=document.getElementById(id);if(el){el.innerHTML='';delete el.dataset.built;}});
+
+  const pct=isTrial2?50:35;
+  setProgress(pct,tl+' — Step '+(isTrial2?7:5)+' of 11', isTrial2?'No-Filter Selfie Task':'Filter Selfie Task');
+  goTo(4);
+}
+
+function handleUp(e){
+  const f=e.target.files[0]; if(!f)return;
+  const r=new FileReader();
+  r.onload=()=>{
+    document.getElementById('uz1').classList.add('hf');
+    document.getElementById('uzTxt').innerHTML='<strong style="color:var(--ok)">✅ Photo selected — '+f.name+'</strong>';
+    const ts=new Date().toLocaleTimeString('en-MY',{hour:'2-digit',minute:'2-digit',second:'2-digit'})+' · '+new Date().toLocaleDateString('en-MY');
+    document.getElementById('upTs').textContent=ts;
+    document.getElementById('upOk').classList.remove('hidden');
+    document.getElementById('pBtn').disabled=false;
+    lastUploadTs[trial] = new Date().toISOString();
+  };
+  r.readAsDataURL(f);
+}
+
+function showFb(){document.getElementById('fbArea').classList.remove('hidden');}
+function startFb(){
+  document.getElementById('fbBtn').disabled=true;
+  let s=60;
+  fbTmr=setInterval(()=>{
+    s--;
+    document.getElementById('fbTxt').textContent=Math.floor(s/60)+':'+(s%60).toString().padStart(2,'0');
+    document.getElementById('fbC').style.strokeDashoffset=CIRC*(1-s/60);
+    if(s<=0){clearInterval(fbTmr);document.getElementById('fbTxt').textContent='✓';document.getElementById('pBtn').disabled=false;lastUploadTs[trial]='fallback_timer_'+new Date().toISOString();}
+  },1000);
+}
+
+function goToView(){
+  if(mTmr)clearInterval(mTmr);
+  let s=60;
+  const c=document.getElementById('mC'),t=document.getElementById('mTxt'),btn=document.getElementById('contQ');
+  btn.classList.add('hidden');c.style.strokeDashoffset=0;
+  mTmr=setInterval(()=>{
+    s--;
+    t.textContent=Math.floor(s/60)+':'+(s%60).toString().padStart(2,'0');
+    c.style.strokeDashoffset=CIRC*(1-s/60);
+    if(s<=0){clearInterval(mTmr);t.textContent='✓';btn.classList.remove('hidden');}
+  },1000);
+  const pct=trial===1?42:58;
+  setProgress(pct,'Trial '+trial+' — Viewing Period','60-second exposure');
+  goTo(5);
+}
+
+function goToQ(){
+  setProgress(trial===1?50:66,'Trial '+trial+' — Questionnaire','Manipulation Check');
+  goTo(6);
+}
+
+// ── Google Sheets submission ──────────────────────────────────
+// Replace SCRIPT_URL with your deployed Google Apps Script Web App URL
+// (see https://github.com/jamiewilson/form-to-google-sheets for setup steps)
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyBr6Z1-XC7W1vOnnS9q6GmYnrI0DbpvzFPKhKV09Grf0E03D47Gte_onVonZmfoc6xmQ/exec';
+
+function getLikertVal(id){
+  const el=document.getElementById(id);
+  if(!el)return '';
+  const active=el.querySelector('.lb.act');
+  return active?active.textContent:'';
+}
+
+function buildTrialPayload(){
+  const ids={
+    mc:['mc1','mc2','mc3','mc4','mc5'],
+    sses:['p14','p15','p16','p17','p18','p19','p20'],
+    ae:['ae1','ae2','ae3','ae4','ae5','ae6','ae7']
+  };
+  const data={
+    participant_id: participantId,
+    trial: trial,
+    condition: cond,
+    upload_timestamp: lastUploadTs[trial] || 'fallback_timer_used',
+    submitted_at: new Date().toISOString(),
+  };
+  ids.mc.forEach((id,i)=>{ data['MC'+(i+1)] = getLikertVal(id); });
+  ids.sses.forEach((id,i)=>{ data['SSES_AE'+(i+1)] = getLikertVal(id); });
+  ids.ae.forEach((id,i)=>{ data['MBSRQ_AE'+(i+1)] = getLikertVal(id); });
+  return data;
+}
+
+function submitToSheet(data){
+  if(SCRIPT_URL.indexOf('PASTE_YOUR') === 0){
+    console.warn('Sheet not connected:', data);
+    return Promise.resolve({result:'skipped'});
+  }
+  const formData = new FormData();
+  Object.keys(data).forEach(k => formData.append(k, data[k]));
+  return fetch(SCRIPT_URL, {
+    method: 'POST',
+    body: formData,
+    mode: 'no-cors',      // ← add this
+    redirect: 'follow'    // ← add this
+  })
+  .then(() => ({ result: 'submitted' }))  // can't read body in no-cors
+  .catch(err => { console.error('Sheet error:', err); return {result:'error'}; });
+}
+
+function submitTrial(){
+  const payload = buildTrialPayload();
+  submitToSheet(payload).then(res=>{ console.log('Trial '+trial+' saved to sheet:', res); });
+
+  if(trial===1){
+    goTo(9);
+  } else {
+    const d=getD(); d.c++;
+    if(cond==='beauty') d.b++;
+    else if(cond==='non') d.n++;
+    else d.nf=(d.nf||0)+1;
+    setD(d); updC();
+    const condLabels={beauty:'Beautifying Filter condition',non:'Non-Beautifying Filter condition',control:'No-Filter Control condition'};
+    document.getElementById('debCond').textContent=condLabels[cond];
+    setProgress(100,'Complete','Debriefing');
+    goTo(10);
+  }
+}
+
+const MCL=['Strongly\nDisagree','Disagree','Neutral','Agree','Strongly\nAgree'];
+const SSL=['Not at all','A little bit','Somewhat','Very much','Extremely'];
+const AEL=['Definitely\nDisagree','Mostly\nDisagree','Neither','Mostly\nAgree','Definitely\nAgree'];
+const SM={6:['mc1','mc2','mc3','mc4','mc5'],7:['p14','p15','p16','p17','p18','p19','p20'],8:['ae1','ae2','ae3','ae4','ae5','ae6','ae7']};
+const LM={6:MCL,7:SSL,8:AEL};
+
+function buildScales(scr){
+  SM[scr].forEach(id=>{
+    const el=document.getElementById(id); if(!el||el.dataset.built)return;
+    el.innerHTML='';
+    LM[scr].forEach((lbl,i)=>{
+      const opt=document.createElement('div'); opt.className='lo';
+      const btn=document.createElement('button'); btn.className='lb'; btn.textContent=i+1;
+      btn.onclick=()=>{el.querySelectorAll('.lb').forEach(b=>b.classList.remove('act'));btn.classList.add('act');};
+      const sp=document.createElement('span'); sp.textContent=lbl;
+      opt.appendChild(btn); opt.appendChild(sp); el.appendChild(opt);
+    });
+    el.dataset.built='1';
+  });
+}
+
+updC();
+</script>
+</body>
+</html>
