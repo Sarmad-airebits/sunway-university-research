@@ -451,13 +451,9 @@
 
 <script>
 // ─────────────────────────────────────────────────────────────────────────────
-// CONFIGURATION — replace before going live
+// CONFIGURATION — replace SCRIPT_URL before going live
 // ─────────────────────────────────────────────────────────────────────────────
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyX7AfwhvIIUvI53LwvaqvWJ08pGEnribhdeL-kDB230d59gtsjzP8CV2MGCFauFInZ/exec';
-
-// Cloudinary (uncomment handleUpload block below when ready):
-// const CLOUDINARY_CLOUD_NAME    = 'YOUR_CLOUD_NAME';
-// const CLOUDINARY_UPLOAD_PRESET = 'YOUR_UNSIGNED_PRESET';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // STATE
@@ -557,7 +553,7 @@ function selectScale(btn, key, val) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// SELFIE UPLOAD
+// SELFIE UPLOAD — Cloudinary unsigned upload
 // ─────────────────────────────────────────────────────────────────────────────
 function handleUpload(trial) {
   const fileInput  = document.getElementById(trial === 1 ? 'selfieInput' : 'selfieInput2');
@@ -570,29 +566,43 @@ function handleUpload(trial) {
   const tsId       = trial === 1 ? 'uploadTimestamp' : 'uploadTimestamp2';
   const urlFieldId = trial === 1 ? 't1_image_url'    : 't2_image_url';
 
-  // Visual feedback
+  // Show uploading state immediately
   document.getElementById(areaId).classList.add('uploaded');
   document.getElementById(areaId).innerHTML =
-    '<div style="font-size:36px;">✅</div>' +
-    '<div style="font-size:14px;font-weight:600;color:#059669;">Selfie uploaded successfully</div>';
-  document.getElementById(confirmId).classList.remove('hidden');
-  document.getElementById(tsId).textContent = 'Upload timestamp: ' + ts;
+    '<div style="font-size:36px;">⏳</div>' +
+    '<div style="font-size:14px;font-weight:600;color:#5B2C8D;">Uploading to secure storage…</div>';
+
   responses['upload_t' + trial] = ts;
 
-  // ── Cloudinary unsigned upload — uncomment once configured ──
-  // const fd = new FormData();
-  // fd.append('file', file);
-  // fd.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
-  // fetch('https://api.cloudinary.com/v1_1/' + CLOUDINARY_CLOUD_NAME + '/image/upload', {
-  //   method: 'POST', body: fd
-  // })
-  // .then(r => r.json())
-  // .then(data => {
-  //   if (data.secure_url) {
-  //     document.getElementById(urlFieldId).value = data.secure_url;
-  //   }
-  // })
-  // .catch(err => console.error('Cloudinary error:', err));
+  // Cloudinary unsigned upload
+  const fd = new FormData();
+  fd.append('file', file);
+  fd.append('upload_preset', 'sunway');
+
+  fetch('https://api.cloudinary.com/v1_1/dn5j5ecjl/image/upload', {
+    method: 'POST',
+    body: fd
+  })
+  .then(r => r.json())
+  .then(data => {
+    if (data.secure_url) {
+      document.getElementById(urlFieldId).value = data.secure_url;
+      document.getElementById(areaId).innerHTML =
+        '<div style="font-size:36px;">✅</div>' +
+        '<div style="font-size:14px;font-weight:600;color:#059669;">Selfie uploaded successfully</div>';
+      document.getElementById(confirmId).classList.remove('hidden');
+      document.getElementById(tsId).textContent = 'Upload timestamp: ' + ts;
+    } else {
+      throw new Error(data.error ? data.error.message : 'Upload failed');
+    }
+  })
+  .catch(err => {
+    console.error('Cloudinary error:', err);
+    document.getElementById(areaId).classList.remove('uploaded');
+    document.getElementById(areaId).innerHTML =
+      '<div style="font-size:36px;">📸</div>' +
+      '<div style="font-size:14px;color:#DC2626;font-weight:600;">Upload failed — tap to try again</div>';
+  });
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
