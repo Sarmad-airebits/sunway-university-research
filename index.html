@@ -437,7 +437,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // CONFIGURATION — replace before going live
 // ─────────────────────────────────────────────────────────────────────────────
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxH41GupoBJSScKmmd6Qi_VZ08tgDBDpm8mAgWJ_UzJlFfC-IZJ7DeokvrDERmtsNS-/exec';  // Google Apps Script URL for Google Sheets integration
+const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 
 // Cloudinary (uncomment handleUpload block below when ready):
 // const CLOUDINARY_CLOUD_NAME    = 'YOUR_CLOUD_NAME';
@@ -620,12 +620,12 @@ function startTimer(displayId, startBtnId, nextBtnId, seconds) {
 //
 // (Trial2 only uses mc1 and mc5; the other mc columns will be blank.)
 // ─────────────────────────────────────────────────────────────────────────────
-function buildPayload(sheetName, trialData) {
+function buildPayload(trialLabel, trialData) {
   const demo = getDemographics();
   const fd   = new FormData();
 
-  fd.append('sheet_name',    sheetName);
   fd.append('participant_id', participantId);   // links T1 + T2 rows
+  fd.append('trial',         trialLabel);       // 'Trial1' or 'Trial2'
 
   // Demographics — repeated on both rows for self-contained analysis
   fd.append('age',         demo.age);
@@ -691,6 +691,7 @@ function submitTrial1() {
     't1SubmitStatus', 'submitT1Btn',
     () => setTimeout(() => goTo(10), 800)
   );
+
 }
 
 function submitTrial2() {
