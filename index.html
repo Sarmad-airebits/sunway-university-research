@@ -343,68 +343,84 @@
   <button class="btn btn-primary hidden" id="toTrial2Btn" onclick="goTo(11)">Begin Trial 2 — No Filter →</button>
 </div>
 
-<!-- ============ STEP 11: TRIAL 2 ============ -->
+<!-- ============ STEP 11: TRIAL 2 — Selfie + Timer ============ -->
 <div id="step11" class="hidden">
   <div class="trial-banner" style="background:#059669;">⬡ TRIAL 2 OF 2 — No-Filter Baseline (All Participants)</div>
   <div class="card">
     <h2>No-Filter Task</h2>
     <p>Take a selfie using <strong>this device's front-facing camera only</strong> — no AR filter or application. Then view your image for 60 seconds.</p>
     <div class="info-box">Use the front-facing camera directly. Do not open Instagram, TikTok, or any other app.</div>
-
-    <!-- Hidden URL field for Trial 2 — populated by Cloudinary when configured -->
     <input type="hidden" id="t2_image_url" value="">
-
     <div class="upload-area" id="uploadArea2" onclick="document.getElementById('selfieInput2').click()">
       <input type="file" id="selfieInput2" accept="image/*" class="hidden" onchange="handleUpload(2)">
       <div class="upload-icon">📸</div>
       <div class="upload-text"><strong>Upload your no-filter selfie</strong><br>JPG or PNG</div>
     </div>
     <div id="uploadConfirm2" class="hidden success-box">✅ <strong>Uploaded · Timestamp recorded</strong><br><span id="uploadTimestamp2" style="font-size:12px;"></span></div>
-
     <div class="timer-display" id="timerDisplay2">1:00</div>
-    <button class="btn btn-secondary" id="startTimerBtn2" onclick="startTimer('timerDisplay2','startTimerBtn2','toQuestBtn2',60)">▶ Start 60-Second Timer</button>
+    <button class="btn btn-secondary" id="startTimerBtn2" onclick="startTimer('timerDisplay2','startTimerBtn2','toT2SubStep1Btn',60)">▶ Start 60-Second Timer</button>
   </div>
+  <button class="btn btn-primary hidden" id="toT2SubStep1Btn" onclick="goToT2Sub(1)">Continue to Questionnaire →</button>
+</div>
 
-  <div id="trial2Quest" class="hidden">
-    <div class="card">
-      <h3>About the No-Filter Image</h3>
-      <p style="font-size:12px;color:#6B7280;font-style:italic;">1 = Strongly Disagree · 5 = Strongly Agree</p>
-      <hr class="divider">
-      <div class="scale-question"><p>1. The image made me look more physically attractive.</p><div class="scale-row" data-q="t2mc1"><button class="scale-btn" onclick="selectScale(this,'t2mc1',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mc1',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mc1',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mc1',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mc1',5)">5</button></div></div>
-      <div class="scale-question"><p>2. The image looked natural and unmodified.</p><div class="scale-row" data-q="t2mc2"><button class="scale-btn" onclick="selectScale(this,'t2mc2',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mc2',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mc2',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mc2',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mc2',5)">5</button></div></div>
-    </div>
-
-    <div class="card">
-      <h3>Appearance Self-Esteem — Trial 2</h3>
-      <p style="font-size:12px;color:#6B7280;font-style:italic;">1 = Not at all · 5 = Extremely · (R) = Reverse-scored</p>
-      <hr class="divider">
-      <div class="scale-question"><p>1. I feel unattractive right now. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="t2sses1"><button class="scale-btn" onclick="selectScale(this,'t2sses1',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses1',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses1',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses1',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses1',5)">5</button></div></div>
-      <div class="scale-question"><p>2. I feel pleased with my appearance right now.</p><div class="scale-row" data-q="t2sses2"><button class="scale-btn" onclick="selectScale(this,'t2sses2',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses2',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses2',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses2',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses2',5)">5</button></div></div>
-      <div class="scale-question"><p>3. I am worried about how my face looks. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="t2sses3"><button class="scale-btn" onclick="selectScale(this,'t2sses3',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses3',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses3',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses3',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses3',5)">5</button></div></div>
-      <div class="scale-question"><p>4. I feel that my face looks right.</p><div class="scale-row" data-q="t2sses4"><button class="scale-btn" onclick="selectScale(this,'t2sses4',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses4',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses4',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses4',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses4',5)">5</button></div></div>
-      <div class="scale-question"><p>5. I feel embarrassed about my appearance. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="t2sses5"><button class="scale-btn" onclick="selectScale(this,'t2sses5',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses5',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses5',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses5',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses5',5)">5</button></div></div>
-      <div class="scale-question"><p>6. I feel comfortable with the way I look.</p><div class="scale-row" data-q="t2sses6"><button class="scale-btn" onclick="selectScale(this,'t2sses6',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses6',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses6',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses6',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses6',5)">5</button></div></div>
-      <div class="scale-question"><p>7. I feel satisfied with my facial appearance right now.</p><div class="scale-row" data-q="t2sses7"><button class="scale-btn" onclick="selectScale(this,'t2sses7',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses7',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses7',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses7',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses7',5)">5</button></div></div>
-    </div>
-
-    <div class="card">
-      <h3>Appearance Satisfaction — Trial 2</h3>
-      <p style="font-size:12px;color:#6B7280;font-style:italic;">1 = Definitely Disagree · 5 = Definitely Agree · (R) = Reverse-scored</p>
-      <hr class="divider">
-      <div class="scale-question"><p>1. I like my looks just the way they are.</p><div class="scale-row" data-q="t2mbsrq1"><button class="scale-btn" onclick="selectScale(this,'t2mbsrq1',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq1',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq1',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq1',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq1',5)">5</button></div></div>
-      <div class="scale-question"><p>2. I wish I looked better. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="t2mbsrq2"><button class="scale-btn" onclick="selectScale(this,'t2mbsrq2',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq2',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq2',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq2',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq2',5)">5</button></div></div>
-      <div class="scale-question"><p>3. I'm physically unattractive. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="t2mbsrq3"><button class="scale-btn" onclick="selectScale(this,'t2mbsrq3',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq3',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq3',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq3',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq3',5)">5</button></div></div>
-      <div class="scale-question"><p>4. Most people would consider me good-looking.</p><div class="scale-row" data-q="t2mbsrq4"><button class="scale-btn" onclick="selectScale(this,'t2mbsrq4',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq4',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq4',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq4',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq4',5)">5</button></div></div>
-      <div class="scale-question"><p>5. I like the way I look without my clothes.</p><div class="scale-row" data-q="t2mbsrq5"><button class="scale-btn" onclick="selectScale(this,'t2mbsrq5',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq5',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq5',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq5',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq5',5)">5</button></div></div>
-      <div class="scale-question"><p>6. I dislike my physique. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="t2mbsrq6"><button class="scale-btn" onclick="selectScale(this,'t2mbsrq6',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq6',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq6',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq6',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq6',5)">5</button></div></div>
-      <div class="scale-question"><p>7. I'm not happy with the way I look. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="t2mbsrq7"><button class="scale-btn" onclick="selectScale(this,'t2mbsrq7',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq7',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq7',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq7',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq7',5)">5</button></div></div>
-    </div>
-
-    <div id="t2SubmitStatus"></div>
-    <button class="btn btn-success" id="submitT2Btn" onclick="submitTrial2()">— Submit Trial 2 &amp; Complete Study —</button>
+<!-- ============ STEP 11a: TRIAL 2 — Manipulation Check ============ -->
+<div id="t2sub1" class="hidden">
+  <div class="trial-banner" style="background:#059669;">⬡ TRIAL 2 OF 2 — About the Image</div>
+  <div class="card">
+    <h2>About the No-Filter Image</h2>
+    <p style="font-size:13px;color:#6B7280;">Please rate the following based on the selfie you just viewed.</p>
+    <p style="font-size:12px;color:#6B7280;font-style:italic;">1 = Strongly Disagree · 3 = Neutral · 5 = Strongly Agree</p>
+    <hr class="divider">
+    <div class="scale-question"><p>1. The image made me look more physically attractive.</p><div class="scale-row" data-q="t2mc1"><button class="scale-btn" onclick="selectScale(this,'t2mc1',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mc1',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mc1',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mc1',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mc1',5)">5</button></div></div>
+    <div class="scale-question"><p>2. The image looked natural and unmodified.</p><div class="scale-row" data-q="t2mc2"><button class="scale-btn" onclick="selectScale(this,'t2mc2',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mc2',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mc2',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mc2',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mc2',5)">5</button></div></div>
   </div>
+  <button class="btn btn-secondary" onclick="goToT2Sub(0)" style="margin-bottom:8px;">← Back</button>
+  <button class="btn btn-primary" onclick="goToT2Sub(2)">Continue to Appearance Self-Esteem →</button>
+</div>
 
-  <button class="btn btn-primary hidden" id="toQuestBtn2" onclick="showTrial2Quest()">Continue to Questionnaire →</button>
+<!-- ============ STEP 11b: TRIAL 2 — SSES ============ -->
+<div id="t2sub2" class="hidden">
+  <div class="trial-banner" style="background:#059669;">⬡ TRIAL 2 OF 2 — Appearance Self-Esteem</div>
+  <div class="card">
+    <h2>How do you feel about your appearance right now?</h2>
+    <p style="font-size:13px;color:#6B7280;">Rate each item according to how you feel <em>at this moment</em>.</p>
+    <p style="font-size:12px;color:#6B7280;font-style:italic;">1 = Not at all · 2 = A little bit · 3 = Somewhat · 4 = Very much · 5 = Extremely</p>
+    <p style="font-size:11px;color:#9CA3AF;font-style:italic;">Appearance Self-Esteem subscale — State Self-Esteem Scale (SSES; Heatherton &amp; Polivy, 1991)</p>
+    <hr class="divider">
+    <div class="scale-question"><p>1. I feel unattractive right now. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="t2sses1"><button class="scale-btn" onclick="selectScale(this,'t2sses1',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses1',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses1',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses1',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses1',5)">5</button></div></div>
+    <div class="scale-question"><p>2. I feel pleased with my appearance right now.</p><div class="scale-row" data-q="t2sses2"><button class="scale-btn" onclick="selectScale(this,'t2sses2',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses2',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses2',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses2',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses2',5)">5</button></div></div>
+    <div class="scale-question"><p>3. I am worried about how my face looks. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="t2sses3"><button class="scale-btn" onclick="selectScale(this,'t2sses3',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses3',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses3',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses3',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses3',5)">5</button></div></div>
+    <div class="scale-question"><p>4. I feel that my face looks right.</p><div class="scale-row" data-q="t2sses4"><button class="scale-btn" onclick="selectScale(this,'t2sses4',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses4',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses4',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses4',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses4',5)">5</button></div></div>
+    <div class="scale-question"><p>5. I feel embarrassed about my appearance. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="t2sses5"><button class="scale-btn" onclick="selectScale(this,'t2sses5',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses5',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses5',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses5',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses5',5)">5</button></div></div>
+    <div class="scale-question"><p>6. I feel comfortable with the way I look.</p><div class="scale-row" data-q="t2sses6"><button class="scale-btn" onclick="selectScale(this,'t2sses6',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses6',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses6',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses6',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses6',5)">5</button></div></div>
+    <div class="scale-question"><p>7. I feel satisfied with my facial appearance right now.</p><div class="scale-row" data-q="t2sses7"><button class="scale-btn" onclick="selectScale(this,'t2sses7',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses7',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses7',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses7',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses7',5)">5</button></div></div>
+    <p class="reverse-note" style="margin-top:12px;">(R) = Reverse-scored. Higher scores = more positive state appearance self-esteem.</p>
+  </div>
+  <button class="btn btn-secondary" onclick="goToT2Sub(1)" style="margin-bottom:8px;">← Back</button>
+  <button class="btn btn-primary" onclick="goToT2Sub(3)">Continue to Appearance Satisfaction →</button>
+</div>
+
+<!-- ============ STEP 11c: TRIAL 2 — MBSRQ ============ -->
+<div id="t2sub3" class="hidden">
+  <div class="trial-banner" style="background:#059669;">⬡ TRIAL 2 OF 2 — Appearance Satisfaction</div>
+  <div class="card">
+    <h2>Your appearance right now</h2>
+    <p style="font-size:13px;color:#6B7280;">Indicate how much you agree or disagree with each statement <em>at this moment</em>.</p>
+    <p style="font-size:12px;color:#6B7280;font-style:italic;">1 = Definitely Disagree · 3 = Neither · 5 = Definitely Agree</p>
+    <p style="font-size:11px;color:#9CA3AF;font-style:italic;">Appearance Evaluation (AE) subscale — MBSRQ (Cash, 2000)</p>
+    <hr class="divider">
+    <div class="scale-question"><p>1. I like my looks just the way they are.</p><div class="scale-row" data-q="t2mbsrq1"><button class="scale-btn" onclick="selectScale(this,'t2mbsrq1',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq1',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq1',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq1',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq1',5)">5</button></div></div>
+    <div class="scale-question"><p>2. I wish I looked better. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="t2mbsrq2"><button class="scale-btn" onclick="selectScale(this,'t2mbsrq2',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq2',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq2',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq2',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq2',5)">5</button></div></div>
+    <div class="scale-question"><p>3. I'm physically unattractive. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="t2mbsrq3"><button class="scale-btn" onclick="selectScale(this,'t2mbsrq3',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq3',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq3',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq3',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq3',5)">5</button></div></div>
+    <div class="scale-question"><p>4. Most people would consider me good-looking.</p><div class="scale-row" data-q="t2mbsrq4"><button class="scale-btn" onclick="selectScale(this,'t2mbsrq4',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq4',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq4',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq4',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq4',5)">5</button></div></div>
+    <div class="scale-question"><p>5. I like the way I look without my clothes.</p><div class="scale-row" data-q="t2mbsrq5"><button class="scale-btn" onclick="selectScale(this,'t2mbsrq5',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq5',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq5',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq5',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq5',5)">5</button></div></div>
+    <div class="scale-question"><p>6. I dislike my physique. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="t2mbsrq6"><button class="scale-btn" onclick="selectScale(this,'t2mbsrq6',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq6',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq6',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq6',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq6',5)">5</button></div></div>
+    <div class="scale-question"><p>7. I'm not happy with the way I look. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="t2mbsrq7"><button class="scale-btn" onclick="selectScale(this,'t2mbsrq7',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq7',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq7',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq7',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq7',5)">5</button></div></div>
+    <p class="reverse-note" style="margin-top:12px;">(R) = Reverse-scored. Higher scores = greater appearance satisfaction.</p>
+  </div>
+  <button class="btn btn-secondary" onclick="goToT2Sub(2)" style="margin-bottom:8px;">← Back</button>
+  <div id="t2SubmitStatus"></div>
+  <button class="btn btn-success" id="submitT2Btn" onclick="submitTrial2()">— Submit Trial 2 &amp; Complete Study —</button>
 </div>
 
 <!-- ============ STEP 12: DEBRIEF ============ -->
@@ -470,12 +486,19 @@ const participantId = 'P' + Date.now() + Math.random().toString(36).slice(2, 6).
 
 const responses = {};  // all scale answers keyed by question id
 let currentStep = 1;
+let currentT2Sub = 0; // tracks which Trial 2 sub-step is active (0 = none/step11)
 
 // ─────────────────────────────────────────────────────────────────────────────
 // NAVIGATION
 // ─────────────────────────────────────────────────────────────────────────────
 function goTo(n) {
-  document.getElementById('step' + currentStep).classList.add('hidden');
+  // Hide current step — if we're in a t2 sub-step, hide that instead
+  if (currentT2Sub > 0) {
+    document.getElementById('t2sub' + currentT2Sub).classList.add('hidden');
+    currentT2Sub = 0;
+  } else {
+    document.getElementById('step' + currentStep).classList.add('hidden');
+  }
   currentStep = n;
   document.getElementById('step' + n).classList.remove('hidden');
   document.getElementById('stepLabel').textContent = stepLabels[n] || '';
@@ -717,15 +740,27 @@ function submitTrial2() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// TRIAL 2 QUESTIONNAIRE REVEAL (after timer completes)
+// TRIAL 2 SUB-STEP NAVIGATION
+// 0 = back to selfie/timer (step11), 1 = MC, 2 = SSES, 3 = MBSRQ+submit
 // ─────────────────────────────────────────────────────────────────────────────
-function showTrial2Quest() {
-  const q = document.getElementById('trial2Quest');
-  q.classList.remove('hidden');
-  document.getElementById('toQuestBtn2').classList.add('hidden');
-  setTimeout(() => {
-    q.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, 100);
+function goToT2Sub(n) {
+  // Hide current sub-step or step11
+  if (currentT2Sub === 0) {
+    document.getElementById('step11').classList.add('hidden');
+  } else {
+    document.getElementById('t2sub' + currentT2Sub).classList.add('hidden');
+  }
+
+  currentT2Sub = n;
+
+  // Show target
+  if (n === 0) {
+    document.getElementById('step11').classList.remove('hidden');
+  } else {
+    document.getElementById('t2sub' + n).classList.remove('hidden');
+  }
+
+  window.scrollTo(0, 0);
 }
 </script>
 </body>
