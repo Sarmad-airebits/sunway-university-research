@@ -40,251 +40,70 @@
   }
   .header-title { font-size: 13px; font-weight: 600; letter-spacing: 0.3px; }
   .header-sub { font-size: 11px; opacity: 0.8; margin-top: 2px; }
-  .progress-bar {
-    background: rgba(255,255,255,0.2);
-    height: 4px;
-    border-radius: 2px;
-    margin-top: 10px;
-  }
-  .progress-fill {
-    background: white;
-    height: 100%;
-    border-radius: 2px;
-    transition: width 0.4s ease;
-  }
-  .step-label {
-    font-size: 10px;
-    opacity: 0.7;
-    margin-top: 4px;
-  }
-  .container {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 24px 16px 80px;
-  }
-  .card {
-    background: white;
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 16px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-  }
+  .container { max-width: 680px; margin: 0 auto; padding: 24px 16px 80px; }
+  .card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
   h1 { font-size: 22px; font-weight: 700; color: var(--purple); margin-bottom: 8px; }
   h2 { font-size: 18px; font-weight: 600; color: var(--dark); margin-bottom: 12px; }
   h3 { font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
   p { font-size: 14px; line-height: 1.65; color: #374151; margin-bottom: 12px; }
-  .badge-row {
-    display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0;
-  }
-  .badge {
-    background: var(--purple-light);
-    color: var(--purple);
-    font-size: 12px;
-    font-weight: 500;
-    padding: 4px 10px;
-    border-radius: 20px;
-  }
-  .info-box {
-    background: var(--purple-light);
-    border-left: 3px solid var(--purple);
-    border-radius: 0 8px 8px 0;
-    padding: 12px 16px;
-    margin: 12px 0;
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--dark);
-  }
-  .warning-box {
-    background: var(--amber-light);
-    border-left: 3px solid var(--amber);
-    border-radius: 0 8px 8px 0;
-    padding: 12px 16px;
-    margin: 12px 0;
-    font-size: 13px;
-    line-height: 1.6;
-    color: #78350F;
-  }
-  .success-box {
-    background: var(--green-light);
-    border-left: 3px solid var(--green);
-    border-radius: 0 8px 8px 0;
-    padding: 12px 16px;
-    margin: 12px 0;
-    font-size: 13px;
-    line-height: 1.6;
-    color: #065F46;
-  }
-  .checkbox-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 12px;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    margin-bottom: 8px;
-    cursor: pointer;
-    transition: border-color 0.2s, background 0.2s;
-  }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+  .badge { background: var(--purple-light); color: var(--purple); font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 20px; }
+  .info-box { background: var(--purple-light); border-left: 3px solid var(--purple); border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 12px 0; font-size: 13px; line-height: 1.6; color: var(--dark); }
+  .warning-box { background: var(--amber-light); border-left: 3px solid var(--amber); border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 12px 0; font-size: 13px; line-height: 1.6; color: #78350F; }
+  .success-box { background: var(--green-light); border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 12px 0; font-size: 13px; line-height: 1.6; color: #065F46; }
+  .error-box { background: #FEF2F2; border-left: 3px solid var(--red); border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 12px 0; font-size: 13px; line-height: 1.6; color: #991B1B; }
+  .checkbox-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px; border: 1.5px solid var(--border); border-radius: 8px; margin-bottom: 8px; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
   .checkbox-item:hover { border-color: var(--purple-mid); background: var(--purple-light); }
   .checkbox-item.checked { border-color: var(--purple); background: var(--purple-light); }
-  .checkbox-item input[type="checkbox"] {
-    width: 18px; height: 18px; accent-color: var(--purple); margin-top: 1px; flex-shrink: 0;
-  }
+  .checkbox-item input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--purple); margin-top: 1px; flex-shrink: 0; }
   .checkbox-item label { font-size: 13px; line-height: 1.5; cursor: pointer; color: #374151; }
   .field-group { margin-bottom: 16px; }
   .field-group label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; color: var(--dark); }
-  .field-group input[type="number"],
-  .field-group select,
-  .field-group input[type="text"] {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .field-group input:focus,
-  .field-group select:focus { border-color: var(--purple); }
+  .field-group input[type="number"], .field-group select, .field-group input[type="text"] { width: 100%; padding: 10px 12px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 14px; outline: none; transition: border-color 0.2s; }
+  .field-group input:focus, .field-group select:focus { border-color: var(--purple); }
   .checkbox-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-  .checkbox-chip {
-    display: flex; align-items: center; gap: 6px;
-    padding: 8px 12px;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 13px;
-    transition: all 0.2s;
-  }
+  .checkbox-chip { display: flex; align-items: center; gap: 6px; padding: 8px 12px; border: 1.5px solid var(--border); border-radius: 8px; cursor: pointer; font-size: 13px; transition: all 0.2s; }
   .checkbox-chip:hover { border-color: var(--purple-mid); }
   .checkbox-chip.selected { border-color: var(--purple); background: var(--purple-light); color: var(--purple); font-weight: 500; }
-  .condition-card {
-    border: 2px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-    margin-bottom: 10px;
-    opacity: 0.5;
-    transition: all 0.3s;
-  }
-  .condition-card.active {
-    border-color: var(--purple);
-    background: var(--purple-light);
-    opacity: 1;
-    transform: scale(1.01);
-  }
+  .condition-card { border: 2px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 10px; opacity: 0.5; transition: all 0.3s; }
+  .condition-card.active { border-color: var(--purple); background: var(--purple-light); opacity: 1; transform: scale(1.01); }
   .condition-icon { font-size: 28px; margin-bottom: 8px; }
   .condition-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--purple); margin-bottom: 4px; }
   .condition-title { font-size: 16px; font-weight: 700; color: var(--dark); }
   .condition-desc { font-size: 13px; color: var(--grey); margin-top: 4px; }
-  .scale-question {
-    padding: 14px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    margin-bottom: 10px;
-  }
+  .scale-question { padding: 14px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; }
   .scale-question p { font-size: 14px; margin-bottom: 10px; }
   .scale-row { display: flex; gap: 6px; justify-content: space-between; }
-  .scale-btn {
-    flex: 1;
-    padding: 8px 4px;
-    border: 1.5px solid var(--border);
-    border-radius: 6px;
-    background: white;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.15s;
-    text-align: center;
-  }
+  .scale-btn { flex: 1; padding: 8px 4px; border: 1.5px solid var(--border); border-radius: 6px; background: white; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.15s; text-align: center; }
   .scale-btn:hover { border-color: var(--purple-mid); background: var(--purple-light); }
   .scale-btn.selected { border-color: var(--purple); background: var(--purple); color: white; }
-  .scale-labels { display: flex; justify-content: space-between; margin-top: 4px; font-size: 10px; color: var(--grey); }
-  .btn {
-    width: 100%;
-    padding: 14px;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-    transition: all 0.2s;
-    margin-top: 8px;
-  }
+  .reverse-note { font-size: 11px; color: var(--grey); font-style: italic; }
+  .citation-note { font-size: 11px; color: var(--grey); font-style: italic; text-align: center; margin-top: 8px; }
+  .btn { width: 100%; padding: 14px; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; margin-top: 8px; }
   .btn-primary { background: var(--purple); color: white; }
   .btn-primary:hover { background: #4A2370; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(91,44,141,0.3); }
   .btn-primary:disabled { background: #C4B5DA; cursor: not-allowed; transform: none; box-shadow: none; }
   .btn-secondary { background: white; color: var(--purple); border: 2px solid var(--purple); }
   .btn-secondary:hover { background: var(--purple-light); }
   .btn-success { background: var(--green); color: white; }
-  .timer-display {
-    font-size: 52px;
-    font-weight: 700;
-    color: var(--purple);
-    text-align: center;
-    letter-spacing: -2px;
-    padding: 24px;
-    background: var(--purple-light);
-    border-radius: 12px;
-    margin: 20px 0;
-  }
+  .btn-success:disabled { background: #6EE7B7; cursor: not-allowed; }
+  .timer-display { font-size: 52px; font-weight: 700; color: var(--purple); text-align: center; letter-spacing: -2px; padding: 24px; background: var(--purple-light); border-radius: 12px; margin: 20px 0; }
   .timer-display.urgent { color: var(--red); background: #FEF2F2; }
-  .upload-area {
-    border: 2px dashed var(--border);
-    border-radius: 10px;
-    padding: 32px 20px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s;
-    margin: 12px 0;
-  }
+  .upload-area { border: 2px dashed var(--border); border-radius: 10px; padding: 32px 20px; text-align: center; cursor: pointer; transition: all 0.2s; margin: 12px 0; }
   .upload-area:hover { border-color: var(--purple-mid); background: var(--purple-light); }
   .upload-area.uploaded { border-color: var(--green); background: var(--green-light); }
   .upload-icon { font-size: 36px; margin-bottom: 8px; }
   .upload-text { font-size: 14px; color: var(--grey); }
-  .qr-placeholder {
-    background: var(--purple-light);
-    border: 2px dashed var(--purple-mid);
-    border-radius: 10px;
-    padding: 40px 20px;
-    text-align: center;
-    margin: 16px 0;
-  }
+  .qr-placeholder { background: var(--purple-light); border: 2px dashed var(--purple-mid); border-radius: 10px; padding: 40px 20px; text-align: center; margin: 16px 0; }
   .qr-icon { font-size: 64px; margin-bottom: 12px; }
-  .reverse-note { font-size: 11px; color: var(--grey); font-style: italic; margin-top: 4px; }
-  .citation-note { font-size: 11px; color: var(--grey); font-style: italic; text-align: center; margin-top: 8px; }
-  .step-indicator {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    color: var(--grey);
-    margin-bottom: 20px;
-  }
-  .step-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--border);
-  }
-  .step-dot.done { background: var(--green); }
-  .step-dot.active { background: var(--purple); }
-  .trial-banner {
-    background: var(--purple);
-    color: white;
-    border-radius: 8px;
-    padding: 10px 16px;
-    font-size: 13px;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 16px;
-    letter-spacing: 0.5px;
-  }
+  .trial-banner { background: var(--purple); color: white; border-radius: 8px; padding: 10px 16px; font-size: 13px; font-weight: 600; text-align: center; margin-bottom: 16px; letter-spacing: 0.5px; }
   .divider { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
   .hidden { display: none; }
+  .submitting-indicator { text-align: center; padding: 12px; font-size: 13px; color: var(--purple); font-style: italic; }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <div>
     <div class="header-title">✦ AR Filters & State Appearance Self-Esteem — Sunway University</div>
@@ -305,15 +124,9 @@
       <span class="badge">📱 Researcher device provided</span>
       <span class="badge">🔒 Fully anonymous</span>
     </div>
-    <div class="info-box">
-      <strong>What will you do?</strong> You will be randomly assigned to one of three conditions: a beautifying AR filter, a non-beautifying AR filter, or a no-filter control. You will complete <strong>two trials</strong> — Trial 1 using your assigned condition, and Trial 2 without any filter. Questionnaires are completed after each trial.
-    </div>
-    <div class="info-box">
-      <strong>Selfie verification:</strong> You will be asked to upload your selfie photograph after each trial to confirm the task was completed. Your photograph will be retained securely as part of the research record, with your informed consent. Full details are provided in the consent form.
-    </div>
-    <div class="info-box">
-      <strong>Risks:</strong> Minimal. You may experience mild, temporary appearance-related self-consciousness. A full debriefing will be provided after the study. You may withdraw at any time without penalty.
-    </div>
+    <div class="info-box"><strong>What will you do?</strong> You will be randomly assigned to one of two conditions: a beautifying AR filter or a non-beautifying AR filter. You will complete <strong>two trials</strong> — Trial 1 using your assigned condition, and Trial 2 without any filter. Questionnaires are completed after each trial.</div>
+    <div class="info-box"><strong>Selfie verification:</strong> You will be asked to upload your selfie photograph after each trial to confirm the task was completed. Your photograph will be retained securely as part of the research record, with your informed consent.</div>
+    <div class="info-box"><strong>Risks:</strong> Minimal. You may experience mild, temporary appearance-related self-consciousness. A full debriefing will be provided after the study. You may withdraw at any time without penalty.</div>
     <p style="font-size:12px;color:#6B7280;margin-top:8px;"><strong>Contact:</strong> Principal Investigator — Ayisha Abdul Rauf, Sunway University Malaysia</p>
   </div>
   <button class="btn btn-primary" onclick="goTo(2)">I've Read This — Continue →</button>
@@ -324,35 +137,13 @@
   <div class="card">
     <h2>Informed Consent</h2>
     <p>Please check each box to confirm your agreement before proceeding.</p>
-
-    <div class="checkbox-item" onclick="toggleCheck('c1')">
-      <input type="checkbox" id="c1">
-      <label for="c1">I have read and understood the Participant Information Sheet.</label>
-    </div>
-    <div class="checkbox-item" onclick="toggleCheck('c2')">
-      <input type="checkbox" id="c2">
-      <label for="c2">I understand participation is voluntary and I may withdraw at any time without penalty, including between trials.</label>
-    </div>
-    <div class="checkbox-item" onclick="toggleCheck('c3')">
-      <input type="checkbox" id="c3">
-      <label for="c3">I understand my questionnaire responses are anonymous and will be used for research purposes only.</label>
-    </div>
-    <div class="checkbox-item" onclick="toggleCheck('c4')">
-      <input type="checkbox" id="c4">
-      <label for="c4">I consent to completing two trials: Trial 1 with my assigned condition and Trial 2 without any filter.</label>
-    </div>
-    <div class="checkbox-item" onclick="toggleCheck('c5')">
-      <input type="checkbox" id="c5">
-      <label for="c5">I consent to uploading a selfie photograph per trial for compliance verification. I understand my photograph will be retained and stored securely on a password-encrypted external hard drive accessible only to the researcher and supervisory team, and will not be shared or published.</label>
-    </div>
-    <div class="checkbox-item" onclick="toggleCheck('c6')">
-      <input type="checkbox" id="c6">
-      <label for="c6">I understand my photograph will be permanently deleted upon completion of the research in accordance with the university's data retention policy.</label>
-    </div>
-    <div class="checkbox-item" onclick="toggleCheck('c7')">
-      <input type="checkbox" id="c7">
-      <label for="c7">I confirm I am aged 18–30, currently reside in Malaysia, and have previously used Instagram or TikTok including their AR filter features.</label>
-    </div>
+    <div class="checkbox-item" onclick="toggleCheck('c1')"><input type="checkbox" id="c1"><label for="c1">I have read and understood the Participant Information Sheet.</label></div>
+    <div class="checkbox-item" onclick="toggleCheck('c2')"><input type="checkbox" id="c2"><label for="c2">I understand participation is voluntary and I may withdraw at any time without penalty, including between trials.</label></div>
+    <div class="checkbox-item" onclick="toggleCheck('c3')"><input type="checkbox" id="c3"><label for="c3">I understand my questionnaire responses are anonymous and will be used for research purposes only.</label></div>
+    <div class="checkbox-item" onclick="toggleCheck('c4')"><input type="checkbox" id="c4"><label for="c4">I consent to completing two trials: Trial 1 with my assigned condition and Trial 2 without any filter.</label></div>
+    <div class="checkbox-item" onclick="toggleCheck('c5')"><input type="checkbox" id="c5"><label for="c5">I consent to uploading a selfie photograph per trial for compliance verification. I understand my photograph will be retained and stored securely on a password-encrypted external hard drive accessible only to the researcher and supervisory team, and will not be shared or published.</label></div>
+    <div class="checkbox-item" onclick="toggleCheck('c6')"><input type="checkbox" id="c6"><label for="c6">I understand my photograph will be permanently deleted upon completion of the research in accordance with the university's data retention policy.</label></div>
+    <div class="checkbox-item" onclick="toggleCheck('c7')"><input type="checkbox" id="c7"><label for="c7">I confirm I am aged 18–30, currently reside in Malaysia, and have previously used Instagram or TikTok including their AR filter features.</label></div>
   </div>
   <button class="btn btn-secondary" onclick="goTo(1)" style="margin-bottom:8px;">← Back</button>
   <button class="btn btn-primary" id="consentBtn" disabled onclick="goTo(3)">I Agree & Consent →</button>
@@ -363,31 +154,21 @@
   <div class="card">
     <h2>About You</h2>
     <p style="font-size:13px;color:#6B7280;">All information is collected anonymously and stored securely.</p>
-
-    <div class="field-group">
-      <label>Age</label>
-      <input type="number" id="age" min="18" max="30" placeholder="Enter your age">
-    </div>
+    <div class="field-group"><label>Age</label><input type="number" id="age" min="18" max="30" placeholder="Enter your age"></div>
     <div class="field-group">
       <label>Gender</label>
       <select id="gender">
         <option value="">— Select —</option>
-        <option>Female</option>
-        <option>Male</option>
-        <option>Non-binary / Gender diverse</option>
-        <option>Prefer not to say</option>
+        <option>Female</option><option>Male</option>
+        <option>Non-binary / Gender diverse</option><option>Prefer not to say</option>
       </select>
     </div>
     <div class="field-group">
       <label>Nationality</label>
       <select id="nationality">
         <option value="">— Select —</option>
-        <option>Malaysian</option>
-        <option>Indonesian</option>
-        <option>Chinese national</option>
-        <option>Indian national</option>
-        <option>Bangladeshi</option>
-        <option>Filipino</option>
+        <option>Malaysian</option><option>Indonesian</option><option>Chinese national</option>
+        <option>Indian national</option><option>Bangladeshi</option><option>Filipino</option>
         <option>Other (currently residing in Malaysia)</option>
       </select>
     </div>
@@ -395,20 +176,16 @@
       <label>Level of Education</label>
       <select id="education">
         <option value="">— Select —</option>
-        <option>Foundation / Pre-university</option>
-        <option>Undergraduate</option>
-        <option>Postgraduate</option>
-        <option>Other</option>
+        <option>Foundation / Pre-university</option><option>Undergraduate</option>
+        <option>Postgraduate</option><option>Other</option>
       </select>
     </div>
     <div class="field-group">
       <label>How often do you use social media filters?</label>
       <select id="filterFreq">
         <option value="">— Select —</option>
-        <option>Never</option>
-        <option>Rarely (≤1×/month)</option>
-        <option>Sometimes (few times/month)</option>
-        <option>Often (few times/week)</option>
+        <option>Never</option><option>Rarely (≤1×/month)</option>
+        <option>Sometimes (few times/month)</option><option>Often (few times/week)</option>
         <option>Very often (daily)</option>
       </select>
     </div>
@@ -432,7 +209,6 @@
   <div class="card">
     <h2>Your Assigned Condition</h2>
     <p style="font-size:13px;color:#6B7280;">You have been <strong>randomly assigned</strong> to the following experimental condition for Trial 1:</p>
-
     <div class="condition-card" id="cond-a">
       <div class="condition-icon">✦</div>
       <div class="condition-label">Condition A</div>
@@ -445,9 +221,7 @@
       <div class="condition-title">Non-Beautifying Filter</div>
       <div class="condition-desc">Entertainment-oriented effect — does not enhance attractiveness</div>
     </div>
-    <div class="info-box" style="margin-top:16px;">
-      📋 <strong>Study overview:</strong> Trial 1 = your assigned condition above · Trial 2 = no-filter baseline (all participants) · Questionnaires after each trial
-    </div>
+    <div class="info-box" style="margin-top:16px;">📋 <strong>Study overview:</strong> Trial 1 = your assigned condition above · Trial 2 = no-filter baseline (all participants) · Questionnaires after each trial</div>
   </div>
   <button class="btn btn-primary" onclick="goTo(5)">Begin Trial 1 →</button>
 </div>
@@ -457,19 +231,20 @@
   <div class="trial-banner">⬡ TRIAL 1 OF 2 — Filter Exposure Task</div>
   <div class="card">
     <h2>Complete the Filter Task</h2>
-
     <div class="qr-placeholder">
       <div class="qr-icon">▦</div>
       <p style="font-size:14px;font-weight:600;color:var(--purple);margin-bottom:4px;">QR Code — Assigned Filter</p>
       <p style="font-size:12px;color:#6B7280;">Scan with this device to open the filter directly in Instagram / TikTok</p>
     </div>
-
     <p style="font-size:13px;"><strong>Step 1:</strong> Scan the QR code above — this opens your assigned AR filter directly in Instagram or TikTok.</p>
     <p style="font-size:13px;"><strong>Step 2:</strong> Ensure your full face is clearly visible in good lighting. Take <strong>one selfie</strong>.</p>
-    <p style="font-size:13px;"><strong>Step 3:</strong> Upload your selfie below for compliance verification.</p>
+    <p style="font-size:13px;"><strong>Step 3:</strong> Save the selfie to your camera roll, then upload it below for compliance verification.</p>
+
+    <!-- Hidden URL field — will be populated by Cloudinary upload when configured -->
+    <input type="hidden" id="t1_image_url" value="">
 
     <div class="upload-area" id="uploadArea" onclick="document.getElementById('selfieInput').click()">
-      <input type="file" id="selfieInput" accept="image/*" class="hidden" onchange="handleUpload()">
+      <input type="file" id="selfieInput" accept="image/*" class="hidden" onchange="handleUpload(1)">
       <div class="upload-icon">📸</div>
       <div class="upload-text"><strong>Tap to select your selfie</strong><br>JPG or PNG</div>
     </div>
@@ -477,12 +252,9 @@
       ✅ <strong>Uploaded · Timestamp recorded</strong><br>
       <span id="uploadTimestamp" style="font-size:12px;"></span>
     </div>
-
-    <div class="info-box" style="margin-top:12px;">
-      🔒 Your photograph will only be retained for research compliance verification and as research data, in accordance with your informed consent.
-    </div>
+    <div class="info-box" style="margin-top:12px;">🔒 Your photograph will only be retained for research compliance verification and as research data, in accordance with your informed consent.</div>
   </div>
-  <button class="btn btn-primary" id="toViewingBtn" onclick="goTo(6)">View Selfie for 60 Seconds →</button>
+  <button class="btn btn-primary" onclick="goTo(6)">View Selfie for 60 Seconds →</button>
 </div>
 
 <!-- ============ STEP 6: VIEWING PERIOD ============ -->
@@ -491,10 +263,8 @@
   <div class="card">
     <h2>View Your Selfie Now</h2>
     <p>Look carefully at your selfie for the full 60 seconds. <strong>Pay close attention to your own facial appearance in the image.</strong></p>
-
     <div class="timer-display" id="timerDisplay1">1:00</div>
     <p class="citation-note">60-second viewing period consistent with Mills et al. (2018) and Dijkslag et al. (2024).</p>
-
     <button class="btn btn-secondary" id="startTimerBtn1" onclick="startTimer('timerDisplay1','startTimerBtn1','toQuestBtn1',60)">▶ Start Timer</button>
   </div>
   <button class="btn btn-primary hidden" id="toQuestBtn1" onclick="goTo(7)">Continue to Questionnaire →</button>
@@ -505,62 +275,14 @@
   <div class="trial-banner">⬡ TRIAL 1 OF 2 — Manipulation Check</div>
   <div class="card">
     <h2>About the Image You Just Viewed</h2>
-    <p style="font-size:13px;color:#6B7280;">Please rate the following based on the selfie you just viewed. There are no right or wrong answers.</p>
+    <p style="font-size:13px;color:#6B7280;">Please rate the following based on the selfie you just viewed.</p>
     <p style="font-size:12px;color:#6B7280;font-style:italic;">1 = Strongly Disagree · 3 = Neutral · 5 = Strongly Agree</p>
     <hr class="divider">
-
-    <div id="mcItems">
-      <div class="scale-question">
-        <p>1. The image made me look more physically attractive.</p>
-        <div class="scale-row" data-q="mc1">
-          <button class="scale-btn" onclick="selectScale(this,'mc1',1)">1</button>
-          <button class="scale-btn" onclick="selectScale(this,'mc1',2)">2</button>
-          <button class="scale-btn" onclick="selectScale(this,'mc1',3)">3</button>
-          <button class="scale-btn" onclick="selectScale(this,'mc1',4)">4</button>
-          <button class="scale-btn" onclick="selectScale(this,'mc1',5)">5</button>
-        </div>
-      </div>
-      <div class="scale-question">
-        <p>2. The image had digital enhancements applied (e.g. skin smoothing, facial refinement).</p>
-        <div class="scale-row" data-q="mc2">
-          <button class="scale-btn" onclick="selectScale(this,'mc2',1)">1</button>
-          <button class="scale-btn" onclick="selectScale(this,'mc2',2)">2</button>
-          <button class="scale-btn" onclick="selectScale(this,'mc2',3)">3</button>
-          <button class="scale-btn" onclick="selectScale(this,'mc2',4)">4</button>
-          <button class="scale-btn" onclick="selectScale(this,'mc2',5)">5</button>
-        </div>
-      </div>
-      <div class="scale-question">
-        <p>3. The image was primarily for entertainment rather than attractiveness enhancement.</p>
-        <div class="scale-row" data-q="mc3">
-          <button class="scale-btn" onclick="selectScale(this,'mc3',1)">1</button>
-          <button class="scale-btn" onclick="selectScale(this,'mc3',2)">2</button>
-          <button class="scale-btn" onclick="selectScale(this,'mc3',3)">3</button>
-          <button class="scale-btn" onclick="selectScale(this,'mc3',4)">4</button>
-          <button class="scale-btn" onclick="selectScale(this,'mc3',5)">5</button>
-        </div>
-      </div>
-      <div class="scale-question">
-        <p>4. The image appeared digitally altered.</p>
-        <div class="scale-row" data-q="mc4">
-          <button class="scale-btn" onclick="selectScale(this,'mc4',1)">1</button>
-          <button class="scale-btn" onclick="selectScale(this,'mc4',2)">2</button>
-          <button class="scale-btn" onclick="selectScale(this,'mc4',3)">3</button>
-          <button class="scale-btn" onclick="selectScale(this,'mc4',4)">4</button>
-          <button class="scale-btn" onclick="selectScale(this,'mc4',5)">5</button>
-        </div>
-      </div>
-      <div class="scale-question">
-        <p>5. The image looked natural and unmodified.</p>
-        <div class="scale-row" data-q="mc5">
-          <button class="scale-btn" onclick="selectScale(this,'mc5',1)">1</button>
-          <button class="scale-btn" onclick="selectScale(this,'mc5',2)">2</button>
-          <button class="scale-btn" onclick="selectScale(this,'mc5',3)">3</button>
-          <button class="scale-btn" onclick="selectScale(this,'mc5',4)">4</button>
-          <button class="scale-btn" onclick="selectScale(this,'mc5',5)">5</button>
-        </div>
-      </div>
-    </div>
+    <div class="scale-question"><p>1. The image made me look more physically attractive.</p><div class="scale-row" data-q="mc1"><button class="scale-btn" onclick="selectScale(this,'mc1',1)">1</button><button class="scale-btn" onclick="selectScale(this,'mc1',2)">2</button><button class="scale-btn" onclick="selectScale(this,'mc1',3)">3</button><button class="scale-btn" onclick="selectScale(this,'mc1',4)">4</button><button class="scale-btn" onclick="selectScale(this,'mc1',5)">5</button></div></div>
+    <div class="scale-question"><p>2. The image had digital enhancements applied (e.g. skin smoothing, facial refinement).</p><div class="scale-row" data-q="mc2"><button class="scale-btn" onclick="selectScale(this,'mc2',1)">1</button><button class="scale-btn" onclick="selectScale(this,'mc2',2)">2</button><button class="scale-btn" onclick="selectScale(this,'mc2',3)">3</button><button class="scale-btn" onclick="selectScale(this,'mc2',4)">4</button><button class="scale-btn" onclick="selectScale(this,'mc2',5)">5</button></div></div>
+    <div class="scale-question"><p>3. The image was primarily for entertainment rather than attractiveness enhancement.</p><div class="scale-row" data-q="mc3"><button class="scale-btn" onclick="selectScale(this,'mc3',1)">1</button><button class="scale-btn" onclick="selectScale(this,'mc3',2)">2</button><button class="scale-btn" onclick="selectScale(this,'mc3',3)">3</button><button class="scale-btn" onclick="selectScale(this,'mc3',4)">4</button><button class="scale-btn" onclick="selectScale(this,'mc3',5)">5</button></div></div>
+    <div class="scale-question"><p>4. The image appeared digitally altered.</p><div class="scale-row" data-q="mc4"><button class="scale-btn" onclick="selectScale(this,'mc4',1)">1</button><button class="scale-btn" onclick="selectScale(this,'mc4',2)">2</button><button class="scale-btn" onclick="selectScale(this,'mc4',3)">3</button><button class="scale-btn" onclick="selectScale(this,'mc4',4)">4</button><button class="scale-btn" onclick="selectScale(this,'mc4',5)">5</button></div></div>
+    <div class="scale-question"><p>5. The image looked natural and unmodified.</p><div class="scale-row" data-q="mc5"><button class="scale-btn" onclick="selectScale(this,'mc5',1)">1</button><button class="scale-btn" onclick="selectScale(this,'mc5',2)">2</button><button class="scale-btn" onclick="selectScale(this,'mc5',3)">3</button><button class="scale-btn" onclick="selectScale(this,'mc5',4)">4</button><button class="scale-btn" onclick="selectScale(this,'mc5',5)">5</button></div></div>
   </div>
   <button class="btn btn-primary" onclick="goTo(8)">Continue to Appearance Self-Esteem Scale →</button>
 </div>
@@ -570,81 +292,17 @@
   <div class="trial-banner">⬡ TRIAL 1 OF 2 — Appearance Self-Esteem</div>
   <div class="card">
     <h2>How do you feel about your appearance right now?</h2>
-    <p style="font-size:13px;color:#6B7280;">Rate each item according to how you feel <em>at this moment</em>, immediately after viewing your selfie. Focus on your facial appearance and how you look.</p>
+    <p style="font-size:13px;color:#6B7280;">Rate each item according to how you feel <em>at this moment</em>.</p>
     <p style="font-size:12px;color:#6B7280;font-style:italic;">1 = Not at all · 2 = A little bit · 3 = Somewhat · 4 = Very much · 5 = Extremely</p>
-    <p style="font-size:11px;color:#9CA3AF;font-style:italic;">Appearance Self-Esteem subscale — State Self-Esteem Scale (SSES; Heatherton & Polivy, 1991) · α > .80</p>
+    <p style="font-size:11px;color:#9CA3AF;font-style:italic;">Appearance Self-Esteem subscale — State Self-Esteem Scale (SSES; Heatherton &amp; Polivy, 1991)</p>
     <hr class="divider">
-
-    <div class="scale-question">
-      <p>1. I feel unattractive right now. <span class="reverse-note">(R)</span></p>
-      <div class="scale-row" data-q="sses1">
-        <button class="scale-btn" onclick="selectScale(this,'sses1',1)">1</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses1',2)">2</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses1',3)">3</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses1',4)">4</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses1',5)">5</button>
-      </div>
-    </div>
-    <div class="scale-question">
-      <p>2. I feel pleased with my appearance right now.</p>
-      <div class="scale-row" data-q="sses2">
-        <button class="scale-btn" onclick="selectScale(this,'sses2',1)">1</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses2',2)">2</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses2',3)">3</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses2',4)">4</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses2',5)">5</button>
-      </div>
-    </div>
-    <div class="scale-question">
-      <p>3. I am worried about how my face looks. <span class="reverse-note">(R)</span></p>
-      <div class="scale-row" data-q="sses3">
-        <button class="scale-btn" onclick="selectScale(this,'sses3',1)">1</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses3',2)">2</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses3',3)">3</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses3',4)">4</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses3',5)">5</button>
-      </div>
-    </div>
-    <div class="scale-question">
-      <p>4. I feel that my face looks right.</p>
-      <div class="scale-row" data-q="sses4">
-        <button class="scale-btn" onclick="selectScale(this,'sses4',1)">1</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses4',2)">2</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses4',3)">3</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses4',4)">4</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses4',5)">5</button>
-      </div>
-    </div>
-    <div class="scale-question">
-      <p>5. I feel embarrassed about my appearance. <span class="reverse-note">(R)</span></p>
-      <div class="scale-row" data-q="sses5">
-        <button class="scale-btn" onclick="selectScale(this,'sses5',1)">1</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses5',2)">2</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses5',3)">3</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses5',4)">4</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses5',5)">5</button>
-      </div>
-    </div>
-    <div class="scale-question">
-      <p>6. I feel comfortable with the way I look.</p>
-      <div class="scale-row" data-q="sses6">
-        <button class="scale-btn" onclick="selectScale(this,'sses6',1)">1</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses6',2)">2</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses6',3)">3</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses6',4)">4</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses6',5)">5</button>
-      </div>
-    </div>
-    <div class="scale-question">
-      <p>7. I feel satisfied with my facial appearance right now.</p>
-      <div class="scale-row" data-q="sses7">
-        <button class="scale-btn" onclick="selectScale(this,'sses7',1)">1</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses7',2)">2</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses7',3)">3</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses7',4)">4</button>
-        <button class="scale-btn" onclick="selectScale(this,'sses7',5)">5</button>
-      </div>
-    </div>
+    <div class="scale-question"><p>1. I feel unattractive right now. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="sses1"><button class="scale-btn" onclick="selectScale(this,'sses1',1)">1</button><button class="scale-btn" onclick="selectScale(this,'sses1',2)">2</button><button class="scale-btn" onclick="selectScale(this,'sses1',3)">3</button><button class="scale-btn" onclick="selectScale(this,'sses1',4)">4</button><button class="scale-btn" onclick="selectScale(this,'sses1',5)">5</button></div></div>
+    <div class="scale-question"><p>2. I feel pleased with my appearance right now.</p><div class="scale-row" data-q="sses2"><button class="scale-btn" onclick="selectScale(this,'sses2',1)">1</button><button class="scale-btn" onclick="selectScale(this,'sses2',2)">2</button><button class="scale-btn" onclick="selectScale(this,'sses2',3)">3</button><button class="scale-btn" onclick="selectScale(this,'sses2',4)">4</button><button class="scale-btn" onclick="selectScale(this,'sses2',5)">5</button></div></div>
+    <div class="scale-question"><p>3. I am worried about how my face looks. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="sses3"><button class="scale-btn" onclick="selectScale(this,'sses3',1)">1</button><button class="scale-btn" onclick="selectScale(this,'sses3',2)">2</button><button class="scale-btn" onclick="selectScale(this,'sses3',3)">3</button><button class="scale-btn" onclick="selectScale(this,'sses3',4)">4</button><button class="scale-btn" onclick="selectScale(this,'sses3',5)">5</button></div></div>
+    <div class="scale-question"><p>4. I feel that my face looks right.</p><div class="scale-row" data-q="sses4"><button class="scale-btn" onclick="selectScale(this,'sses4',1)">1</button><button class="scale-btn" onclick="selectScale(this,'sses4',2)">2</button><button class="scale-btn" onclick="selectScale(this,'sses4',3)">3</button><button class="scale-btn" onclick="selectScale(this,'sses4',4)">4</button><button class="scale-btn" onclick="selectScale(this,'sses4',5)">5</button></div></div>
+    <div class="scale-question"><p>5. I feel embarrassed about my appearance. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="sses5"><button class="scale-btn" onclick="selectScale(this,'sses5',1)">1</button><button class="scale-btn" onclick="selectScale(this,'sses5',2)">2</button><button class="scale-btn" onclick="selectScale(this,'sses5',3)">3</button><button class="scale-btn" onclick="selectScale(this,'sses5',4)">4</button><button class="scale-btn" onclick="selectScale(this,'sses5',5)">5</button></div></div>
+    <div class="scale-question"><p>6. I feel comfortable with the way I look.</p><div class="scale-row" data-q="sses6"><button class="scale-btn" onclick="selectScale(this,'sses6',1)">1</button><button class="scale-btn" onclick="selectScale(this,'sses6',2)">2</button><button class="scale-btn" onclick="selectScale(this,'sses6',3)">3</button><button class="scale-btn" onclick="selectScale(this,'sses6',4)">4</button><button class="scale-btn" onclick="selectScale(this,'sses6',5)">5</button></div></div>
+    <div class="scale-question"><p>7. I feel satisfied with my facial appearance right now.</p><div class="scale-row" data-q="sses7"><button class="scale-btn" onclick="selectScale(this,'sses7',1)">1</button><button class="scale-btn" onclick="selectScale(this,'sses7',2)">2</button><button class="scale-btn" onclick="selectScale(this,'sses7',3)">3</button><button class="scale-btn" onclick="selectScale(this,'sses7',4)">4</button><button class="scale-btn" onclick="selectScale(this,'sses7',5)">5</button></div></div>
     <p class="reverse-note" style="margin-top:12px;">(R) = Reverse-scored. Higher scores = more positive state appearance self-esteem.</p>
   </div>
   <button class="btn btn-primary" onclick="goTo(9)">Continue to Appearance Satisfaction →</button>
@@ -657,183 +315,76 @@
     <h2>Your appearance right now</h2>
     <p style="font-size:13px;color:#6B7280;">Indicate how much you agree or disagree with each statement <em>at this moment</em>.</p>
     <p style="font-size:12px;color:#6B7280;font-style:italic;">1 = Definitely Disagree · 3 = Neither · 5 = Definitely Agree</p>
-    <p style="font-size:11px;color:#9CA3AF;font-style:italic;">Appearance Evaluation (AE) subscale — MBSRQ (Cash, 2000) · α > .80</p>
+    <p style="font-size:11px;color:#9CA3AF;font-style:italic;">Appearance Evaluation (AE) subscale — MBSRQ (Cash, 2000)</p>
     <hr class="divider">
-
-    <div class="scale-question">
-      <p>1. I like my looks just the way they are.</p>
-      <div class="scale-row" data-q="mbsrq1">
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq1',1)">1</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq1',2)">2</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq1',3)">3</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq1',4)">4</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq1',5)">5</button>
-      </div>
-    </div>
-    <div class="scale-question">
-      <p>2. I wish I looked better. <span class="reverse-note">(R)</span></p>
-      <div class="scale-row" data-q="mbsrq2">
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq2',1)">1</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq2',2)">2</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq2',3)">3</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq2',4)">4</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq2',5)">5</button>
-      </div>
-    </div>
-    <div class="scale-question">
-      <p>3. I'm physically unattractive. <span class="reverse-note">(R)</span></p>
-      <div class="scale-row" data-q="mbsrq3">
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq3',1)">1</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq3',2)">2</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq3',3)">3</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq3',4)">4</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq3',5)">5</button>
-      </div>
-    </div>
-    <div class="scale-question">
-      <p>4. Most people would consider me good-looking.</p>
-      <div class="scale-row" data-q="mbsrq4">
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq4',1)">1</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq4',2)">2</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq4',3)">3</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq4',4)">4</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq4',5)">5</button>
-      </div>
-    </div>
-    <div class="scale-question">
-      <p>5. I like the way I look without my clothes.</p>
-      <div class="scale-row" data-q="mbsrq5">
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq5',1)">1</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq5',2)">2</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq5',3)">3</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq5',4)">4</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq5',5)">5</button>
-      </div>
-    </div>
-    <div class="scale-question">
-      <p>6. I dislike my physique. <span class="reverse-note">(R)</span></p>
-      <div class="scale-row" data-q="mbsrq6">
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq6',1)">1</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq6',2)">2</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq6',3)">3</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq6',4)">4</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq6',5)">5</button>
-      </div>
-    </div>
-    <div class="scale-question">
-      <p>7. I'm not happy with the way I look. <span class="reverse-note">(R)</span></p>
-      <div class="scale-row" data-q="mbsrq7">
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq7',1)">1</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq7',2)">2</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq7',3)">3</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq7',4)">4</button>
-        <button class="scale-btn" onclick="selectScale(this,'mbsrq7',5)">5</button>
-      </div>
-    </div>
+    <div class="scale-question"><p>1. I like my looks just the way they are.</p><div class="scale-row" data-q="mbsrq1"><button class="scale-btn" onclick="selectScale(this,'mbsrq1',1)">1</button><button class="scale-btn" onclick="selectScale(this,'mbsrq1',2)">2</button><button class="scale-btn" onclick="selectScale(this,'mbsrq1',3)">3</button><button class="scale-btn" onclick="selectScale(this,'mbsrq1',4)">4</button><button class="scale-btn" onclick="selectScale(this,'mbsrq1',5)">5</button></div></div>
+    <div class="scale-question"><p>2. I wish I looked better. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="mbsrq2"><button class="scale-btn" onclick="selectScale(this,'mbsrq2',1)">1</button><button class="scale-btn" onclick="selectScale(this,'mbsrq2',2)">2</button><button class="scale-btn" onclick="selectScale(this,'mbsrq2',3)">3</button><button class="scale-btn" onclick="selectScale(this,'mbsrq2',4)">4</button><button class="scale-btn" onclick="selectScale(this,'mbsrq2',5)">5</button></div></div>
+    <div class="scale-question"><p>3. I'm physically unattractive. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="mbsrq3"><button class="scale-btn" onclick="selectScale(this,'mbsrq3',1)">1</button><button class="scale-btn" onclick="selectScale(this,'mbsrq3',2)">2</button><button class="scale-btn" onclick="selectScale(this,'mbsrq3',3)">3</button><button class="scale-btn" onclick="selectScale(this,'mbsrq3',4)">4</button><button class="scale-btn" onclick="selectScale(this,'mbsrq3',5)">5</button></div></div>
+    <div class="scale-question"><p>4. Most people would consider me good-looking.</p><div class="scale-row" data-q="mbsrq4"><button class="scale-btn" onclick="selectScale(this,'mbsrq4',1)">1</button><button class="scale-btn" onclick="selectScale(this,'mbsrq4',2)">2</button><button class="scale-btn" onclick="selectScale(this,'mbsrq4',3)">3</button><button class="scale-btn" onclick="selectScale(this,'mbsrq4',4)">4</button><button class="scale-btn" onclick="selectScale(this,'mbsrq4',5)">5</button></div></div>
+    <div class="scale-question"><p>5. I like the way I look without my clothes.</p><div class="scale-row" data-q="mbsrq5"><button class="scale-btn" onclick="selectScale(this,'mbsrq5',1)">1</button><button class="scale-btn" onclick="selectScale(this,'mbsrq5',2)">2</button><button class="scale-btn" onclick="selectScale(this,'mbsrq5',3)">3</button><button class="scale-btn" onclick="selectScale(this,'mbsrq5',4)">4</button><button class="scale-btn" onclick="selectScale(this,'mbsrq5',5)">5</button></div></div>
+    <div class="scale-question"><p>6. I dislike my physique. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="mbsrq6"><button class="scale-btn" onclick="selectScale(this,'mbsrq6',1)">1</button><button class="scale-btn" onclick="selectScale(this,'mbsrq6',2)">2</button><button class="scale-btn" onclick="selectScale(this,'mbsrq6',3)">3</button><button class="scale-btn" onclick="selectScale(this,'mbsrq6',4)">4</button><button class="scale-btn" onclick="selectScale(this,'mbsrq6',5)">5</button></div></div>
+    <div class="scale-question"><p>7. I'm not happy with the way I look. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="mbsrq7"><button class="scale-btn" onclick="selectScale(this,'mbsrq7',1)">1</button><button class="scale-btn" onclick="selectScale(this,'mbsrq7',2)">2</button><button class="scale-btn" onclick="selectScale(this,'mbsrq7',3)">3</button><button class="scale-btn" onclick="selectScale(this,'mbsrq7',4)">4</button><button class="scale-btn" onclick="selectScale(this,'mbsrq7',5)">5</button></div></div>
     <p class="reverse-note" style="margin-top:12px;">(R) = Reverse-scored. Higher scores = greater appearance satisfaction.</p>
   </div>
-  <button class="btn btn-success" onclick="goTo(10)">— Submit Trial 1 —</button>
+  <div id="t1SubmitStatus"></div>
+  <button class="btn btn-success" id="submitT1Btn" onclick="submitTrial1()">— Submit Trial 1 —</button>
 </div>
 
-<!-- ============ STEP 10: TRIAL 1 COMPLETE / REST ============ -->
+<!-- ============ STEP 10: REST ============ -->
 <div id="step10" class="hidden">
   <div class="card" style="text-align:center;">
     <div style="font-size:48px;margin-bottom:12px;">✓</div>
     <h2>Trial 1 Complete</h2>
-    <div class="success-box" style="text-align:left;margin-top:16px;">
-      Trial 1 responses saved. You will now complete <strong>Trial 2</strong> — the same procedure but <strong>without any filter</strong>. This serves as your personal no-filter baseline, allowing within-person comparison of your responses.
-    </div>
-    <div class="warning-box" style="text-align:left;">
-      ⏸ Please take a short <strong>2-minute rest</strong> before continuing.
-    </div>
+    <div class="success-box" style="text-align:left;margin-top:16px;">Trial 1 responses saved. You will now complete <strong>Trial 2</strong> — the same procedure but <strong>without any filter</strong>. This serves as your personal no-filter baseline.</div>
+    <div class="warning-box" style="text-align:left;">⏸ Please take a short <strong>2-minute rest</strong> before continuing.</div>
     <div class="timer-display" id="restTimer">2:00</div>
     <button class="btn btn-secondary" id="restStartBtn" onclick="startTimer('restTimer','restStartBtn','toTrial2Btn',120)">▶ Start Rest Timer</button>
   </div>
   <button class="btn btn-primary hidden" id="toTrial2Btn" onclick="goTo(11)">Begin Trial 2 — No Filter →</button>
 </div>
 
-<!-- ============ STEP 11: TRIAL 2 + DEBRIEF ============ -->
+<!-- ============ STEP 11: TRIAL 2 ============ -->
 <div id="step11" class="hidden">
   <div class="trial-banner" style="background:#059669;">⬡ TRIAL 2 OF 2 — No-Filter Baseline (All Participants)</div>
   <div class="card">
     <h2>No-Filter Task</h2>
-    <p>Take a selfie using <strong>this device's front-facing camera only</strong> — no AR filter or application. Then view your image for 60 seconds, paying attention to your own facial appearance.</p>
+    <p>Take a selfie using <strong>this device's front-facing camera only</strong> — no AR filter or application. Then view your image for 60 seconds.</p>
     <div class="info-box">Use the front-facing camera directly. Do not open Instagram, TikTok, or any other app.</div>
 
+    <!-- Hidden URL field for Trial 2 — populated by Cloudinary when configured -->
+    <input type="hidden" id="t2_image_url" value="">
+
     <div class="upload-area" id="uploadArea2" onclick="document.getElementById('selfieInput2').click()">
-      <input type="file" id="selfieInput2" accept="image/*" class="hidden" onchange="handleUpload2()">
+      <input type="file" id="selfieInput2" accept="image/*" class="hidden" onchange="handleUpload(2)">
       <div class="upload-icon">📸</div>
       <div class="upload-text"><strong>Upload your no-filter selfie</strong><br>JPG or PNG</div>
     </div>
-    <div id="uploadConfirm2" class="hidden success-box">
-      ✅ <strong>Uploaded · Timestamp recorded</strong><br>
-      <span id="uploadTimestamp2" style="font-size:12px;"></span>
-    </div>
+    <div id="uploadConfirm2" class="hidden success-box">✅ <strong>Uploaded · Timestamp recorded</strong><br><span id="uploadTimestamp2" style="font-size:12px;"></span></div>
 
     <div class="timer-display" id="timerDisplay2">1:00</div>
     <button class="btn btn-secondary" id="startTimerBtn2" onclick="startTimer('timerDisplay2','startTimerBtn2','toQuestBtn2',60)">▶ Start 60-Second Timer</button>
   </div>
 
-  <!-- Trial 2 questionnaires inline -->
   <div id="trial2Quest" class="hidden">
     <div class="card">
       <h3>About the No-Filter Image</h3>
       <p style="font-size:12px;color:#6B7280;font-style:italic;">1 = Strongly Disagree · 5 = Strongly Agree</p>
       <hr class="divider">
-      <div class="scale-question">
-        <p>1. The image made me look more physically attractive.</p>
-        <div class="scale-row" data-q="t2mc1">
-          <button class="scale-btn" onclick="selectScale(this,'t2mc1',1)">1</button>
-          <button class="scale-btn" onclick="selectScale(this,'t2mc1',2)">2</button>
-          <button class="scale-btn" onclick="selectScale(this,'t2mc1',3)">3</button>
-          <button class="scale-btn" onclick="selectScale(this,'t2mc1',4)">4</button>
-          <button class="scale-btn" onclick="selectScale(this,'t2mc1',5)">5</button>
-        </div>
-      </div>
-      <div class="scale-question">
-        <p>5. The image looked natural and unmodified.</p>
-        <div class="scale-row" data-q="t2mc5">
-          <button class="scale-btn" onclick="selectScale(this,'t2mc5',1)">1</button>
-          <button class="scale-btn" onclick="selectScale(this,'t2mc5',2)">2</button>
-          <button class="scale-btn" onclick="selectScale(this,'t2mc5',3)">3</button>
-          <button class="scale-btn" onclick="selectScale(this,'t2mc5',4)">4</button>
-          <button class="scale-btn" onclick="selectScale(this,'t2mc5',5)">5</button>
-        </div>
-      </div>
+      <div class="scale-question"><p>1. The image made me look more physically attractive.</p><div class="scale-row" data-q="t2mc1"><button class="scale-btn" onclick="selectScale(this,'t2mc1',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mc1',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mc1',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mc1',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mc1',5)">5</button></div></div>
+      <div class="scale-question"><p>5. The image looked natural and unmodified.</p><div class="scale-row" data-q="t2mc5"><button class="scale-btn" onclick="selectScale(this,'t2mc5',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mc5',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mc5',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mc5',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mc5',5)">5</button></div></div>
     </div>
 
     <div class="card">
       <h3>Appearance Self-Esteem — Trial 2</h3>
       <p style="font-size:12px;color:#6B7280;font-style:italic;">1 = Not at all · 5 = Extremely · (R) = Reverse-scored</p>
       <hr class="divider">
-      <div class="scale-question">
-        <p>1. I feel unattractive right now. <span class="reverse-note">(R)</span></p>
-        <div class="scale-row" data-q="t2sses1"><button class="scale-btn" onclick="selectScale(this,'t2sses1',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses1',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses1',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses1',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses1',5)">5</button></div>
-      </div>
-      <div class="scale-question">
-        <p>2. I feel pleased with my appearance right now.</p>
-        <div class="scale-row" data-q="t2sses2"><button class="scale-btn" onclick="selectScale(this,'t2sses2',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses2',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses2',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses2',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses2',5)">5</button></div>
-      </div>
-      <div class="scale-question">
-        <p>3. I am worried about how my face looks. <span class="reverse-note">(R)</span></p>
-        <div class="scale-row" data-q="t2sses3"><button class="scale-btn" onclick="selectScale(this,'t2sses3',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses3',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses3',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses3',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses3',5)">5</button></div>
-      </div>
-      <div class="scale-question">
-        <p>4. I feel that my face looks right.</p>
-        <div class="scale-row" data-q="t2sses4"><button class="scale-btn" onclick="selectScale(this,'t2sses4',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses4',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses4',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses4',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses4',5)">5</button></div>
-      </div>
-      <div class="scale-question">
-        <p>5. I feel embarrassed about my appearance. <span class="reverse-note">(R)</span></p>
-        <div class="scale-row" data-q="t2sses5"><button class="scale-btn" onclick="selectScale(this,'t2sses5',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses5',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses5',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses5',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses5',5)">5</button></div>
-      </div>
-      <div class="scale-question">
-        <p>6. I feel comfortable with the way I look.</p>
-        <div class="scale-row" data-q="t2sses6"><button class="scale-btn" onclick="selectScale(this,'t2sses6',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses6',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses6',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses6',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses6',5)">5</button></div>
-      </div>
-      <div class="scale-question">
-        <p>7. I feel satisfied with my facial appearance right now.</p>
-        <div class="scale-row" data-q="t2sses7"><button class="scale-btn" onclick="selectScale(this,'t2sses7',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses7',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses7',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses7',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses7',5)">5</button></div>
-      </div>
+      <div class="scale-question"><p>1. I feel unattractive right now. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="t2sses1"><button class="scale-btn" onclick="selectScale(this,'t2sses1',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses1',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses1',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses1',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses1',5)">5</button></div></div>
+      <div class="scale-question"><p>2. I feel pleased with my appearance right now.</p><div class="scale-row" data-q="t2sses2"><button class="scale-btn" onclick="selectScale(this,'t2sses2',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses2',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses2',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses2',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses2',5)">5</button></div></div>
+      <div class="scale-question"><p>3. I am worried about how my face looks. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="t2sses3"><button class="scale-btn" onclick="selectScale(this,'t2sses3',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses3',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses3',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses3',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses3',5)">5</button></div></div>
+      <div class="scale-question"><p>4. I feel that my face looks right.</p><div class="scale-row" data-q="t2sses4"><button class="scale-btn" onclick="selectScale(this,'t2sses4',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses4',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses4',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses4',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses4',5)">5</button></div></div>
+      <div class="scale-question"><p>5. I feel embarrassed about my appearance. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="t2sses5"><button class="scale-btn" onclick="selectScale(this,'t2sses5',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses5',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses5',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses5',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses5',5)">5</button></div></div>
+      <div class="scale-question"><p>6. I feel comfortable with the way I look.</p><div class="scale-row" data-q="t2sses6"><button class="scale-btn" onclick="selectScale(this,'t2sses6',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses6',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses6',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses6',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses6',5)">5</button></div></div>
+      <div class="scale-question"><p>7. I feel satisfied with my facial appearance right now.</p><div class="scale-row" data-q="t2sses7"><button class="scale-btn" onclick="selectScale(this,'t2sses7',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2sses7',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2sses7',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2sses7',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2sses7',5)">5</button></div></div>
     </div>
 
     <div class="card">
@@ -849,7 +400,8 @@
       <div class="scale-question"><p>7. I'm not happy with the way I look. <span class="reverse-note">(R)</span></p><div class="scale-row" data-q="t2mbsrq7"><button class="scale-btn" onclick="selectScale(this,'t2mbsrq7',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq7',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq7',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq7',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mbsrq7',5)">5</button></div></div>
     </div>
 
-    <button class="btn btn-success" onclick="goTo(12)">— Submit Trial 2 & Complete Study —</button>
+    <div id="t2SubmitStatus"></div>
+    <button class="btn btn-success" id="submitT2Btn" onclick="submitTrial2()">— Submit Trial 2 &amp; Complete Study —</button>
   </div>
 
   <button class="btn btn-primary hidden" id="toQuestBtn2" onclick="showTrial2Quest()">Continue to Questionnaire →</button>
@@ -864,58 +416,70 @@
   <div class="card">
     <h3>Purpose of This Study</h3>
     <p>This research examined whether exposure to beautifying AR filters, non-beautifying AR filters, or no filter produces measurable differences in <strong>state appearance self-esteem</strong> and <strong>appearance satisfaction</strong> among young adults in Malaysia.</p>
-    <p>The Appearance Self-Esteem subscale of the State Self-Esteem Scale (Heatherton & Polivy, 1991) and the Appearance Evaluation subscale of the MBSRQ (Cash, 2000) were used to capture your immediate responses across both trials.</p>
-
-    <div class="warning-box">
-      AR filters apply digital enhancements that <strong>do not represent realistic appearance standards</strong>. Any temporary feelings of appearance-related discomfort following this study are expected to resolve shortly.
-    </div>
-
-    <div class="info-box">
-      Your selfie photographs are stored securely on a password-encrypted external hard drive and will be permanently deleted upon completion of the research, in accordance with the university's data retention policy and your informed consent.
-    </div>
-
+    <p>The Appearance Self-Esteem subscale of the State Self-Esteem Scale (Heatherton &amp; Polivy, 1991) and the Appearance Evaluation subscale of the MBSRQ (Cash, 2000) were used to capture your immediate responses across both trials.</p>
+    <div class="warning-box">AR filters apply digital enhancements that <strong>do not represent realistic appearance standards</strong>. Any temporary feelings of appearance-related discomfort following this study are expected to resolve shortly.</div>
+    <div class="info-box">Your selfie photographs are stored securely on a password-encrypted external hard drive and will be permanently deleted upon completion of the research, in accordance with the university's data retention policy and your informed consent.</div>
     <h3 style="margin-top:16px;">If you feel distressed:</h3>
     <p>
-    🏫 <strong>Sunway University Student Wellbeing & Counselling Centre:</strong> counselling@sunway.edu.my<br>
-    📧 <strong>Primary Researcher — Ayisha Abdul Rauf:</strong> 24150898@imail.sunway.edu.my<br>
-    📧 <strong>Main Supervisor — Dr Lee Ai-Suan:</strong> aisuanl@sunway.edu.my<br>
-    📧 <strong>Co-Supervisor — Dr Hiran Shanake Perera:</strong> hiranp@sunway.edu.my<br>
-    📞 <strong>Befrienders KL:</strong> 03-7627 2929 (24 hours)
+      🏫 <strong>Sunway University Student Wellbeing &amp; Counselling Centre:</strong> counselling@sunway.edu.my<br>
+      📧 <strong>Primary Researcher — Ayisha Abdul Rauf:</strong> 24150898@imail.sunway.edu.my<br>
+      📧 <strong>Main Supervisor — Dr Lee Ai-Suan:</strong> aisuanl@sunway.edu.my<br>
+      📧 <strong>Co-Supervisor — Dr Hiran Shanake Perera:</strong> hiranp@sunway.edu.my<br>
+      📞 <strong>Befrienders KL:</strong> 03-7627 2929 (24 hours)
     </p>
-
     <p style="margin-top:16px;font-size:13px;color:#6B7280;">Thank you for your valuable contribution to research on digital well-being and appearance self-esteem in Malaysia.</p>
   </div>
 </div>
 
-</div>
+</div><!-- /container -->
 
 <script>
-const steps = {
-  1: 'Step 1 of 11 — Introduction',
-  2: 'Step 2 of 11 — Informed Consent',
-  3: 'Step 3 of 11 — Demographics',
-  4: 'Step 4 of 11 — Condition Assignment',
-  5: 'Step 5 of 11 — Trial 1: Filter Task',
-  6: 'Step 6 of 11 — Trial 1: Viewing Period',
-  7: 'Step 7 of 11 — Trial 1: Manipulation Check',
-  8: 'Step 8 of 11 — Trial 1: Appearance Self-Esteem',
-  9: 'Step 9 of 11 — Trial 1: Appearance Satisfaction',
+// ─────────────────────────────────────────────────────────────────────────────
+// CONFIGURATION — replace before going live
+// ─────────────────────────────────────────────────────────────────────────────
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzLBjz9r2xYiW-JbA-cNqhFYneE1sViyEMsDSZCzCNsLfLelR1edZvJbij3pL8VQCz0/exec';  // Google Apps Script URL for Google Sheets integration
+
+// Cloudinary (uncomment handleUpload block below when ready):
+// const CLOUDINARY_CLOUD_NAME    = 'YOUR_CLOUD_NAME';
+// const CLOUDINARY_UPLOAD_PRESET = 'YOUR_UNSIGNED_PRESET';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────────────────────────────────────────
+const stepLabels = {
+  1:  'Step 1 of 11 — Introduction',
+  2:  'Step 2 of 11 — Informed Consent',
+  3:  'Step 3 of 11 — Demographics',
+  4:  'Step 4 of 11 — Condition Assignment',
+  5:  'Step 5 of 11 — Trial 1: Filter Task',
+  6:  'Step 6 of 11 — Trial 1: Viewing Period',
+  7:  'Step 7 of 11 — Trial 1: Manipulation Check',
+  8:  'Step 8 of 11 — Trial 1: Appearance Self-Esteem',
+  9:  'Step 9 of 11 — Trial 1: Appearance Satisfaction',
   10: 'Step 10 of 11 — Rest Period',
   11: 'Step 11 of 11 — Trial 2: No-Filter Baseline',
   12: 'Study Complete — Debriefing'
 };
 
-const conditions = ['a','b'];
-const assignedCondition = conditions[Math.floor(Math.random() * 3)];
-const responses = {};
+// Assign condition randomly (a = Beautifying, b = Non-Beautifying)
+const assignedCondition = ['a', 'b'][Math.floor(Math.random() * 2)];
+const conditionLabel    = assignedCondition === 'a' ? 'Beautifying Filter' : 'Non-Beautifying Filter';
+
+// Shared ID so both rows can be linked in the spreadsheet
+const participantId = 'P' + Date.now() + Math.random().toString(36).slice(2, 6).toUpperCase();
+
+const responses = {};  // all scale answers keyed by question id
 let currentStep = 1;
 
+// ─────────────────────────────────────────────────────────────────────────────
+// NAVIGATION
+// ─────────────────────────────────────────────────────────────────────────────
 function goTo(n) {
   document.getElementById('step' + currentStep).classList.add('hidden');
   currentStep = n;
   document.getElementById('step' + n).classList.remove('hidden');
-  document.getElementById('stepLabel').textContent = steps[n] || '';
-  window.scrollTo(0,0);
+  document.getElementById('stepLabel').textContent = stepLabels[n] || '';
+  window.scrollTo(0, 0);
   if (n === 4) showCondition();
 }
 
@@ -924,74 +488,243 @@ function showCondition() {
   document.getElementById('cond-' + assignedCondition).classList.add('active');
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// CONSENT
+// ─────────────────────────────────────────────────────────────────────────────
 function toggleCheck(id) {
   const cb = document.getElementById(id);
   cb.checked = !cb.checked;
   cb.closest('.checkbox-item').classList.toggle('checked', cb.checked);
-  const all = ['c1','c2','c3','c4','c5','c6','c7'];
-  const allChecked = all.every(i => document.getElementById(i).checked);
+  const allChecked = ['c1','c2','c3','c4','c5','c6','c7']
+    .every(i => document.getElementById(i).checked);
   document.getElementById('consentBtn').disabled = !allChecked;
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// DEMOGRAPHICS HELPERS
+// ─────────────────────────────────────────────────────────────────────────────
 function togglePlatform(el) {
   el.classList.toggle('selected');
 }
 
+function getDemographics() {
+  const platforms = Array.from(
+    document.querySelectorAll('#platformGrid .checkbox-chip.selected')
+  ).map(el => el.textContent.trim()).join('; ') || '(none selected)';
+
+  return {
+    age:         document.getElementById('age').value,
+    gender:      document.getElementById('gender').value,
+    nationality: document.getElementById('nationality').value,
+    education:   document.getElementById('education').value,
+    filterFreq:  document.getElementById('filterFreq').value,
+    platforms,
+    condition:   conditionLabel
+  };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SCALE SELECTION
+// ─────────────────────────────────────────────────────────────────────────────
 function selectScale(btn, key, val) {
-  const row = btn.closest('.scale-row');
-  row.querySelectorAll('.scale-btn').forEach(b => b.classList.remove('selected'));
+  btn.closest('.scale-row').querySelectorAll('.scale-btn')
+     .forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
   responses[key] = val;
 }
 
-function handleUpload() {
-  const file = document.getElementById('selfieInput').files[0];
+// ─────────────────────────────────────────────────────────────────────────────
+// SELFIE UPLOAD
+// ─────────────────────────────────────────────────────────────────────────────
+function handleUpload(trial) {
+  const fileInput  = document.getElementById(trial === 1 ? 'selfieInput' : 'selfieInput2');
+  const file       = fileInput.files[0];
   if (!file) return;
-  const ts = new Date().toLocaleString();
-  document.getElementById('uploadArea').classList.add('uploaded');
-  document.getElementById('uploadArea').innerHTML = '<div style="font-size:36px;">✅</div><div style="font-size:14px;font-weight:600;color:#059669;">Selfie uploaded successfully</div>';
-  document.getElementById('uploadConfirm').classList.remove('hidden');
-  document.getElementById('uploadTimestamp').textContent = 'Upload timestamp: ' + ts;
-  responses['upload_t1'] = ts;
+
+  const ts         = new Date().toLocaleString();
+  const areaId     = trial === 1 ? 'uploadArea'      : 'uploadArea2';
+  const confirmId  = trial === 1 ? 'uploadConfirm'   : 'uploadConfirm2';
+  const tsId       = trial === 1 ? 'uploadTimestamp' : 'uploadTimestamp2';
+  const urlFieldId = trial === 1 ? 't1_image_url'    : 't2_image_url';
+
+  // Visual feedback
+  document.getElementById(areaId).classList.add('uploaded');
+  document.getElementById(areaId).innerHTML =
+    '<div style="font-size:36px;">✅</div>' +
+    '<div style="font-size:14px;font-weight:600;color:#059669;">Selfie uploaded successfully</div>';
+  document.getElementById(confirmId).classList.remove('hidden');
+  document.getElementById(tsId).textContent = 'Upload timestamp: ' + ts;
+  responses['upload_t' + trial] = ts;
+
+  // ── Cloudinary unsigned upload — uncomment once configured ──
+  // const fd = new FormData();
+  // fd.append('file', file);
+  // fd.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+  // fetch('https://api.cloudinary.com/v1_1/' + CLOUDINARY_CLOUD_NAME + '/image/upload', {
+  //   method: 'POST', body: fd
+  // })
+  // .then(r => r.json())
+  // .then(data => {
+  //   if (data.secure_url) {
+  //     document.getElementById(urlFieldId).value = data.secure_url;
+  //   }
+  // })
+  // .catch(err => console.error('Cloudinary error:', err));
 }
 
-function handleUpload2() {
-  const file = document.getElementById('selfieInput2').files[0];
-  if (!file) return;
-  const ts = new Date().toLocaleString();
-  document.getElementById('uploadArea2').classList.add('uploaded');
-  document.getElementById('uploadArea2').innerHTML = '<div style="font-size:36px;">✅</div><div style="font-size:14px;font-weight:600;color:#059669;">Selfie uploaded successfully</div>';
-  document.getElementById('uploadConfirm2').classList.remove('hidden');
-  document.getElementById('uploadTimestamp2').textContent = 'Upload timestamp: ' + ts;
-  responses['upload_t2'] = ts;
-}
-
+// ─────────────────────────────────────────────────────────────────────────────
+// COUNTDOWN TIMER
+// ─────────────────────────────────────────────────────────────────────────────
 function startTimer(displayId, startBtnId, nextBtnId, seconds) {
-  document.getElementById(startBtnId).disabled = true;
-  document.getElementById(startBtnId).textContent = '⏱ Running...';
-  let remaining = seconds;
+  const btn     = document.getElementById(startBtnId);
   const display = document.getElementById(displayId);
+  btn.disabled  = true;
+  btn.textContent = '⏱ Running...';
+  let remaining   = seconds;
+
   const interval = setInterval(() => {
     remaining--;
     const m = Math.floor(remaining / 60);
     const s = remaining % 60;
-    display.textContent = m + ':' + String(s).padStart(2,'0');
+    display.textContent = m + ':' + String(s).padStart(2, '0');
     if (remaining <= 10) display.classList.add('urgent');
     if (remaining <= 0) {
       clearInterval(interval);
-      display.textContent = '✓ Done';
-      display.classList.remove('urgent');
+      display.textContent      = '✓ Done';
       display.style.background = '#ECFDF5';
-      display.style.color = '#059669';
+      display.style.color      = '#059669';
+      display.classList.remove('urgent');
       document.getElementById(nextBtnId).classList.remove('hidden');
-      document.getElementById(startBtnId).classList.add('hidden');
+      btn.classList.add('hidden');
     }
   }, 1000);
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// GOOGLE SHEETS SUBMISSION (jamiewilson method)
+//
+// Two sheets in one spreadsheet:
+//   sheet_name = "Trial1"  →  one row per participant after Trial 1
+//   sheet_name = "Trial2"  →  one row per participant after Trial 2
+//
+// Both rows carry participant_id (links them), demographics, and
+// their respective scale scores + image_url.
+//
+// Column headers to create in EACH sheet tab (id & timestamp are auto):
+//   id | timestamp | participant_id | age | gender | nationality |
+//   education | filterFreq | platforms | condition |
+//   mc1 | mc2 | mc3 | mc4 | mc5 |
+//   sses1 | sses2 | sses3 | sses4 | sses5 | sses6 | sses7 |
+//   mbsrq1 | mbsrq2 | mbsrq3 | mbsrq4 | mbsrq5 | mbsrq6 | mbsrq7 |
+//   image_url | upload_timestamp
+//
+// (Trial2 only uses mc1 and mc5; the other mc columns will be blank.)
+// ─────────────────────────────────────────────────────────────────────────────
+function buildPayload(sheetName, trialData) {
+  const demo = getDemographics();
+  const fd   = new FormData();
+
+  fd.append('sheet_name',    sheetName);
+  fd.append('participant_id', participantId);   // links T1 + T2 rows
+
+  // Demographics — repeated on both rows for self-contained analysis
+  fd.append('age',         demo.age);
+  fd.append('gender',      demo.gender);
+  fd.append('nationality', demo.nationality);
+  fd.append('education',   demo.education);
+  fd.append('filterFreq',  demo.filterFreq);
+  fd.append('platforms',   demo.platforms);
+  fd.append('condition',   demo.condition);
+
+  // Trial-specific fields
+  Object.entries(trialData).forEach(([k, v]) => fd.append(k, v));
+
+  return fd;
+}
+
+function postToSheets(payload, statusId, btnId, onSuccess) {
+  const statusEl    = document.getElementById(statusId);
+  const btn         = document.getElementById(btnId);
+  btn.disabled      = true;
+  statusEl.innerHTML = '<div class="submitting-indicator">⏳ Saving responses…</div>';
+
+  fetch(SCRIPT_URL, {
+    method:   'POST',
+    body:     payload,
+    mode:     'no-cors',    // required for Apps Script web app
+    redirect: 'follow'
+  })
+  .then(() => {
+    // no-cors means we can't read the response body, but a resolved
+    // promise means the request reached the server without a network error
+    statusEl.innerHTML = '<div class="success-box">✅ Responses saved successfully.</div>';
+    onSuccess();
+  })
+  .catch(err => {
+    console.error('Submission error:', err);
+    statusEl.innerHTML =
+      '<div class="error-box">⚠️ Submission failed. Please check your connection and try again.</div>';
+    btn.disabled = false;
+  });
+}
+
+function submitTrial1() {
+  const data = {
+    // Manipulation check (all 5 items)
+    mc1: responses.mc1 || '', mc2: responses.mc2 || '',
+    mc3: responses.mc3 || '', mc4: responses.mc4 || '', mc5: responses.mc5 || '',
+    // SSES-AE
+    sses1: responses.sses1 || '', sses2: responses.sses2 || '',
+    sses3: responses.sses3 || '', sses4: responses.sses4 || '',
+    sses5: responses.sses5 || '', sses6: responses.sses6 || '', sses7: responses.sses7 || '',
+    // MBSRQ-AE
+    mbsrq1: responses.mbsrq1 || '', mbsrq2: responses.mbsrq2 || '',
+    mbsrq3: responses.mbsrq3 || '', mbsrq4: responses.mbsrq4 || '',
+    mbsrq5: responses.mbsrq5 || '', mbsrq6: responses.mbsrq6 || '', mbsrq7: responses.mbsrq7 || '',
+    // Photo
+    image_url:        document.getElementById('t1_image_url').value || '',
+    upload_timestamp: responses.upload_t1 || ''
+  };
+
+  postToSheets(
+    buildPayload('Trial1', data),
+    't1SubmitStatus', 'submitT1Btn',
+    () => setTimeout(() => goTo(10), 800)
+  );
+}
+
+function submitTrial2() {
+  const data = {
+    // Manipulation check (subset — mc1 & mc5 only; mc2–mc4 left blank)
+    mc1: responses.t2mc1 || '', mc2: '', mc3: '', mc4: '',
+    mc5: responses.t2mc5 || '',
+    // SSES-AE
+    sses1: responses.t2sses1 || '', sses2: responses.t2sses2 || '',
+    sses3: responses.t2sses3 || '', sses4: responses.t2sses4 || '',
+    sses5: responses.t2sses5 || '', sses6: responses.t2sses6 || '', sses7: responses.t2sses7 || '',
+    // MBSRQ-AE
+    mbsrq1: responses.t2mbsrq1 || '', mbsrq2: responses.t2mbsrq2 || '',
+    mbsrq3: responses.t2mbsrq3 || '', mbsrq4: responses.t2mbsrq4 || '',
+    mbsrq5: responses.t2mbsrq5 || '', mbsrq6: responses.t2mbsrq6 || '', mbsrq7: responses.t2mbsrq7 || '',
+    // Photo
+    image_url:        document.getElementById('t2_image_url').value || '',
+    upload_timestamp: responses.upload_t2 || ''
+  };
+
+  postToSheets(
+    buildPayload('Trial2', data),
+    't2SubmitStatus', 'submitT2Btn',
+    () => setTimeout(() => goTo(12), 800)
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TRIAL 2 QUESTIONNAIRE REVEAL (after timer completes)
+// ─────────────────────────────────────────────────────────────────────────────
 function showTrial2Quest() {
   document.getElementById('trial2Quest').classList.remove('hidden');
   document.getElementById('toQuestBtn2').classList.add('hidden');
+  window.scrollTo(0, document.getElementById('trial2Quest').offsetTop - 20);
 }
 </script>
 </body>
