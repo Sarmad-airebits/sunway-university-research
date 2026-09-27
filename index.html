@@ -107,14 +107,35 @@
 <div class="header">
   <div>
     <div class="header-title">✦ AR Filters & State Appearance Self-Esteem — Sunway University</div>
-    <div class="header-sub" id="stepLabel">Step 1 of 11 — Introduction</div>
+    <div class="header-sub" id="stepLabel">Researcher setup</div>
   </div>
 </div>
 
 <div class="container">
 
+<!-- ============ RESEARCHER SETUP ============ -->
+<div id="researcherSetup">
+  <div class="card">
+    <h1>Researcher Setup</h1>
+    <div class="field-group">
+      <label for="participantCode">Participant code</label>
+      <input type="text" id="participantCode" placeholder="e.g. P001" required autocomplete="off">
+    </div>
+    <div class="field-group">
+      <label for="conditionSelect">Condition</label>
+      <select id="conditionSelect" required>
+        <option value="">— Select condition —</option>
+        <option value="1">1 — Beautifying Filter</option>
+        <option value="2">2 — Non-Beautifying Filter</option>
+        <option value="3">3 — No-Filter Control</option>
+      </select>
+    </div>
+  </div>
+  <button class="btn btn-primary" onclick="startStudy()">Start study</button>
+</div>
+
 <!-- ============ STEP 1: PIS ============ -->
-<div id="step1">
+<div id="step1" class="hidden">
   <div class="card">
     <h1>AR Filters & Appearance Study</h1>
     <p>You are invited to participate in a psychology research study at Sunway University examining how augmented reality (AR) social media filters influence <strong>state appearance self-esteem</strong> and <strong>appearance satisfaction</strong> among young adults in Malaysia.</p>
@@ -124,7 +145,7 @@
       <span class="badge">📱 Researcher device provided</span>
       <span class="badge">🔒 Fully anonymous</span>
     </div>
-    <div class="info-box"><strong>What will you do?</strong> You will be randomly assigned to one of two conditions: a beautifying AR filter or a non-beautifying AR filter. You will complete <strong>two trials</strong> — Trial 1 using your assigned condition, and Trial 2 without any filter. Questionnaires are completed after each trial.</div>
+    <div class="info-box"><strong>What will you do?</strong> You will complete <strong>two trials</strong> — Trial 1 using your assigned condition (beautifying filter, non-beautifying filter, or no-filter control), and Trial 2 without any filter. Questionnaires are completed after each trial.</div>
     <div class="info-box"><strong>Selfie verification:</strong> You will be asked to upload your selfie photograph after each trial to confirm the task was completed. Your photograph will be retained securely as part of the research record, with your informed consent.</div>
     <div class="info-box"><strong>Risks:</strong> Minimal. You may experience mild, temporary appearance-related self-consciousness. A full debriefing will be provided after the study. You may withdraw at any time without penalty.</div>
     <p style="font-size:12px;color:#6B7280;margin-top:8px;"><strong>Contact:</strong> Principal Investigator — Ayisha Abdul Rauf, Sunway University Malaysia</p>
@@ -208,18 +229,24 @@
 <div id="step4" class="hidden">
   <div class="card">
     <h2>Your Assigned Condition</h2>
-    <p style="font-size:13px;color:#6B7280;">You have been <strong>randomly assigned</strong> to the following experimental condition for Trial 1:</p>
+    <p style="font-size:13px;color:#6B7280;">The researcher has selected the following experimental condition for Trial 1:</p>
     <div class="condition-card" id="cond-a">
       <div class="condition-icon">✦</div>
-      <div class="condition-label">Condition A</div>
+      <div class="condition-label">Condition 1</div>
       <div class="condition-title">Beautifying Filter</div>
       <div class="condition-desc">Enhances facial features — skin smoothing, complexion brightening, facial refinement</div>
     </div>
     <div class="condition-card" id="cond-b">
       <div class="condition-icon">◦</div>
-      <div class="condition-label">Condition B</div>
+      <div class="condition-label">Condition 2</div>
       <div class="condition-title">Non-Beautifying Filter</div>
       <div class="condition-desc">Entertainment-oriented effect — does not enhance attractiveness</div>
+    </div>
+    <div class="condition-card" id="cond-c">
+      <div class="condition-icon">○</div>
+      <div class="condition-label">Condition 3</div>
+      <div class="condition-title">No-Filter Control</div>
+      <div class="condition-desc">Use the camera without applying an AR filter</div>
     </div>
     <div class="info-box" style="margin-top:16px;">📋 <strong>Study overview:</strong> Trial 1 = your assigned condition above · Trial 2 = no-filter baseline (all participants) · Questionnaires after each trial</div>
   </div>
@@ -231,14 +258,14 @@
   <div class="trial-banner">⬡ TRIAL 1 OF 2 — Filter Exposure Task</div>
   <div class="card">
     <h2>Complete the Filter Task</h2>
-    <div class="qr-placeholder">
+    <div class="qr-placeholder" id="trial1Qr">
       <div class="qr-icon">▦</div>
       <p style="font-size:14px;font-weight:600;color:var(--purple);margin-bottom:4px;">QR Code — Assigned Filter</p>
       <p style="font-size:12px;color:#6B7280;">Scan with this device to open the filter directly in Instagram / TikTok</p>
     </div>
-    <p style="font-size:13px;"><strong>Step 1:</strong> Scan the QR code above — this opens your assigned AR filter directly in Instagram or TikTok.</p>
-    <p style="font-size:13px;"><strong>Step 2:</strong> Ensure your full face is clearly visible in good lighting. Take <strong>one selfie</strong>.</p>
-    <p style="font-size:13px;"><strong>Step 3:</strong> Save the selfie to your camera roll, then upload it below for compliance verification.</p>
+    <p id="trial1Step1" style="font-size:13px;"><strong>Step 1:</strong> Scan the QR code above — this opens your assigned AR filter directly in Instagram or TikTok.</p>
+    <p id="trial1Step2" style="font-size:13px;"><strong>Step 2:</strong> Ensure your full face is clearly visible in good lighting. Take <strong>one selfie</strong>.</p>
+    <p id="trial1Step3" style="font-size:13px;"><strong>Step 3:</strong> Save the selfie to your camera roll, then upload it below for compliance verification.</p>
 
     <!-- Hidden URL field — will be populated by Cloudinary upload when configured -->
     <input type="hidden" id="t1_image_url" value="">
@@ -473,9 +500,9 @@ const stepLabels = {
   12: 'Study Complete — Debriefing'
 };
 
-// Assign condition randomly (a = Beautifying, b = Non-Beautifying)
-const assignedCondition = ['a', 'b'][Math.floor(Math.random() * 2)];
-const conditionLabel    = assignedCondition === 'a' ? 'Beautifying Filter' : 'Non-Beautifying Filter';
+let participantCode = '';
+let conditionNumber = '';
+let assignedCondition = '';
 
 // Shared ID so both rows can be linked in the spreadsheet
 const participantId = 'P' + Date.now() + Math.random().toString(36).slice(2, 6).toUpperCase();
@@ -483,6 +510,24 @@ const participantId = 'P' + Date.now() + Math.random().toString(36).slice(2, 6).
 const responses = {};  // all scale answers keyed by question id
 let currentStep = 1;
 let currentT2Sub = 0; // tracks which Trial 2 sub-step is active (0 = none/step11)
+
+function startStudy() {
+  const codeInput = document.getElementById('participantCode');
+  const conditionInput = document.getElementById('conditionSelect');
+  codeInput.value = codeInput.value.trim();
+  if (!codeInput.reportValidity() || !conditionInput.reportValidity()) return;
+
+  participantCode = codeInput.value;
+  conditionNumber = conditionInput.value;
+  const conditionMap = {
+    '1': 'a',
+    '2': 'b',
+    '3': 'c'
+  };
+  assignedCondition = conditionMap[conditionNumber];
+  document.getElementById('researcherSetup').classList.add('hidden');
+  goTo(1);
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // NAVIGATION
@@ -500,11 +545,31 @@ function goTo(n) {
   document.getElementById('stepLabel').textContent = stepLabels[n] || '';
   window.scrollTo(0, 0);
   if (n === 4) showCondition();
+  if (n === 5) configureTrial1Task();
 }
 
 function showCondition() {
   document.querySelectorAll('.condition-card').forEach(c => c.classList.remove('active'));
   document.getElementById('cond-' + assignedCondition).classList.add('active');
+}
+
+function configureTrial1Task() {
+  const isControl = conditionNumber === '3';
+  document.getElementById('trial1Qr').classList.toggle('hidden', isControl);
+  document.getElementById('stepLabel').textContent = isControl
+    ? 'Step 5 of 11 — Trial 1: No-Filter Control'
+    : stepLabels[5];
+  document.querySelector('#step5 .trial-banner').textContent = isControl
+    ? '⬡ TRIAL 1 OF 2 — No-Filter Control Task'
+    : '⬡ TRIAL 1 OF 2 — Filter Exposure Task';
+  document.querySelector('#step5 h2').textContent = isControl
+    ? 'Complete the No-Filter Task'
+    : 'Complete the Filter Task';
+  document.getElementById('trial1Step1').innerHTML = isControl
+    ? '<strong>Step 1:</strong> Use the device\'s front-facing camera without opening Instagram, TikTok, or applying any filter.'
+    : '<strong>Step 1:</strong> Scan the QR code above — this opens your assigned AR filter directly in Instagram or TikTok.';
+  document.getElementById('trial1Step2').innerHTML = '<strong>Step 2:</strong> Ensure your full face is clearly visible in good lighting. Take <strong>one selfie</strong>.';
+  document.getElementById('trial1Step3').innerHTML = '<strong>Step 3:</strong> Save the selfie to your camera roll, then upload it below for compliance verification.';
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -538,7 +603,7 @@ function getDemographics() {
     education:   document.getElementById('education').value,
     filterFreq:  document.getElementById('filterFreq').value,
     platforms,
-    condition:   conditionLabel
+    condition:   conditionNumber
   };
 }
 
@@ -641,8 +706,8 @@ function startTimer(displayId, startBtnId, nextBtnId, seconds) {
 // participant_id links both rows for the same participant.
 //
 // Sheet1 column headers (id & timestamp are auto-generated by Apps Script):
-//   id | timestamp | participant_id | trial | age | gender | nationality |
-//   education | filterFreq | platforms | condition |
+//   id | timestamp | participant_id | participant_code | trial | age | gender |
+//   nationality | education | filterFreq | platforms | condition |
 //   mc1 | mc2 | mc3 | mc4 | mc5 |
 //   sses1 | sses2 | sses3 | sses4 | sses5 | sses6 | sses7 |
 //   mbsrq1 | mbsrq2 | mbsrq3 | mbsrq4 | mbsrq5 | mbsrq6 | mbsrq7 |
@@ -655,6 +720,7 @@ function buildPayload(trialLabel, trialData) {
   const fd   = new FormData();
 
   fd.append('participant_id', participantId);   // links T1 + T2 rows
+  fd.append('participant_code', participantCode);
   fd.append('trial',         trialLabel);       // 'Trial1' or 'Trial2'
 
   // Demographics — repeated on both rows for self-contained analysis
