@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AR Filters & State Appearance Self-Esteem Study — Sunway University</title>
+<title>Social Media &amp; Well-being Study — Sunway University</title>
 <style>
   :root {
     --purple: #5B2C8D;
@@ -106,7 +106,7 @@
 
 <div class="header">
   <div>
-    <div class="header-title">✦ AR Filters & State Appearance Self-Esteem — Sunway University</div>
+    <div class="header-title">Social Media &amp; Well-being Study — Sunway University</div>
     <div class="header-sub" id="stepLabel">Researcher setup</div>
   </div>
 </div>
@@ -137,15 +137,15 @@
 <!-- ============ STEP 1: PIS ============ -->
 <div id="step1" class="hidden">
   <div class="card">
-    <h1>AR Filters & Appearance Study</h1>
-    <p>You are invited to participate in a psychology research study at Sunway University examining how augmented reality (AR) social media filters influence <strong>state appearance self-esteem</strong> and <strong>appearance satisfaction</strong> among young adults in Malaysia.</p>
+    <h1>Social Media &amp; Well-being Study — Sunway University</h1>
+    <p>You are invited to participate in a psychology research study at Sunway University examining social media use and well-being among young adults in Malaysia.</p>
     <div class="badge-row">
       <span class="badge">⏱ ~20–25 min</span>
       <span class="badge">🔁 2 Trials</span>
       <span class="badge">📱 Researcher device provided</span>
-      <span class="badge">🔒 Fully anonymous</span>
+      <span class="badge">🔒 Anonymous questionnaire responses</span>
     </div>
-    <div class="info-box"><strong>What will you do?</strong> You will complete <strong>two trials</strong> — Trial 1 using your assigned condition (beautifying filter, non-beautifying filter, or no-filter control), and Trial 2 without any filter. Questionnaires are completed after each trial.</div>
+    <div class="info-box"><strong>What will you do?</strong> You will be assigned to one of three conditions and complete two short trials. In each trial you will take one selfie on the study phone, view it for 60 seconds, and answer short questionnaires.</div>
     <div class="info-box"><strong>Selfie verification:</strong> You will be asked to upload your selfie photograph after each trial to confirm the task was completed. Your photograph will be retained securely as part of the research record, with your informed consent.</div>
     <div class="info-box"><strong>Risks:</strong> Minimal. You may experience mild, temporary appearance-related self-consciousness. A full debriefing will be provided after the study. You may withdraw at any time without penalty.</div>
     <p style="font-size:12px;color:#6B7280;margin-top:8px;"><strong>Contact:</strong> Principal Investigator — Ayisha Abdul Rauf, Sunway University Malaysia</p>
@@ -164,7 +164,7 @@
     <div class="checkbox-item" onclick="toggleCheck('c4')"><input type="checkbox" id="c4"><label for="c4">I consent to completing two trials: Trial 1 with my assigned condition and Trial 2 without any filter.</label></div>
     <div class="checkbox-item" onclick="toggleCheck('c5')"><input type="checkbox" id="c5"><label for="c5">I consent to uploading a selfie photograph per trial for compliance verification. I understand my photograph will be retained and stored securely on a password-encrypted external hard drive accessible only to the researcher and supervisory team, and will not be shared or published.</label></div>
     <div class="checkbox-item" onclick="toggleCheck('c6')"><input type="checkbox" id="c6"><label for="c6">I understand my photograph will be permanently deleted upon completion of the research in accordance with the university's data retention policy.</label></div>
-    <div class="checkbox-item" onclick="toggleCheck('c7')"><input type="checkbox" id="c7"><label for="c7">I confirm I am aged 18–30, currently reside in Malaysia, and have previously used Instagram or TikTok including their AR filter features.</label></div>
+    <div class="checkbox-item" onclick="toggleCheck('c7')"><input type="checkbox" id="c7"><label for="c7">I confirm I am aged 18–30, am a Malaysian citizen, and have previously used AR filters on social media (e.g. Snapchat, Instagram or TikTok).</label></div>
   </div>
   <button class="btn btn-secondary" onclick="goTo(1)" style="margin-bottom:8px;">← Back</button>
   <button class="btn btn-primary" id="consentBtn" disabled onclick="goTo(3)">I Agree & Consent →</button>
@@ -185,13 +185,16 @@
       </select>
     </div>
     <div class="field-group">
-      <label>Nationality</label>
-      <select id="nationality">
+      <label for="ethnicity">Ethnicity</label>
+      <select id="ethnicity" onchange="toggleOtherEthnicity()">
         <option value="">— Select —</option>
-        <option>Malaysian</option><option>Indonesian</option><option>Chinese national</option>
-        <option>Indian national</option><option>Bangladeshi</option><option>Filipino</option>
-        <option>Other (currently residing in Malaysia)</option>
+        <option>Malay</option>
+        <option>Chinese</option>
+        <option>Indian</option>
+        <option>Other Bumiputera (Sabah &amp; Sarawak)</option>
+        <option value="Others">Others (please specify)</option>
       </select>
+      <input type="text" id="ethnicityOther" class="hidden" placeholder="Please specify" aria-label="Specify ethnicity">
     </div>
     <div class="field-group">
       <label>Level of Education</label>
@@ -215,6 +218,7 @@
       <div class="checkbox-grid" id="platformGrid">
         <div class="checkbox-chip" onclick="togglePlatform(this)">Instagram</div>
         <div class="checkbox-chip" onclick="togglePlatform(this)">TikTok</div>
+        <div class="checkbox-chip" onclick="togglePlatform(this)">Snapchat</div>
         <div class="checkbox-chip" onclick="togglePlatform(this)">Facebook</div>
         <div class="checkbox-chip" onclick="togglePlatform(this)">YouTube</div>
         <div class="checkbox-chip" onclick="togglePlatform(this)">I do not use social media</div>
@@ -229,26 +233,7 @@
 <div id="step4" class="hidden">
   <div class="card">
     <h2>Your Assigned Condition</h2>
-    <p style="font-size:13px;color:#6B7280;">The researcher has selected the following experimental condition for Trial 1:</p>
-    <div class="condition-card" id="cond-a">
-      <div class="condition-icon">✦</div>
-      <div class="condition-label">Condition 1</div>
-      <div class="condition-title">Beautifying Filter</div>
-      <div class="condition-desc">Enhances facial features — skin smoothing, complexion brightening, facial refinement</div>
-    </div>
-    <div class="condition-card" id="cond-b">
-      <div class="condition-icon">◦</div>
-      <div class="condition-label">Condition 2</div>
-      <div class="condition-title">Non-Beautifying Filter</div>
-      <div class="condition-desc">Entertainment-oriented effect — does not enhance attractiveness</div>
-    </div>
-    <div class="condition-card" id="cond-c">
-      <div class="condition-icon">○</div>
-      <div class="condition-label">Condition 3</div>
-      <div class="condition-title">No-Filter Control</div>
-      <div class="condition-desc">Use the camera without applying an AR filter</div>
-    </div>
-    <div class="info-box" style="margin-top:16px;">📋 <strong>Study overview:</strong> Trial 1 = your assigned condition above · Trial 2 = no-filter baseline (all participants) · Questionnaires after each trial</div>
+    <p id="assignedConditionText" style="font-size:13px;color:#6B7280;"></p>
   </div>
   <button class="btn btn-primary" onclick="goTo(5)">Begin Trial 1 →</button>
 </div>
@@ -261,11 +246,12 @@
     <div class="qr-placeholder" id="trial1Qr">
       <div class="qr-icon">▦</div>
       <p style="font-size:14px;font-weight:600;color:var(--purple);margin-bottom:4px;">QR Code — Assigned Filter</p>
-      <p style="font-size:12px;color:#6B7280;">Scan with this device to open the filter directly in Instagram / TikTok</p>
+      <p style="font-size:12px;color:#6B7280;">Scan with this device to open the filter directly in Snapchat</p>
     </div>
-    <p id="trial1Step1" style="font-size:13px;"><strong>Step 1:</strong> Scan the QR code above — this opens your assigned AR filter directly in Instagram or TikTok.</p>
+    <p id="trial1Step1" style="font-size:13px;"><strong>Step 1:</strong> Scan the QR code above — this opens your assigned filter directly in Snapchat.</p>
     <p id="trial1Step2" style="font-size:13px;"><strong>Step 2:</strong> Ensure your full face is clearly visible in good lighting. Take <strong>one selfie</strong>.</p>
     <p id="trial1Step3" style="font-size:13px;"><strong>Step 3:</strong> Save the selfie to your camera roll, then upload it below for compliance verification.</p>
+    <div class="info-box hidden" id="trial1NoFilterNote">Use the front-facing camera directly. Do not open Snapchat or any other app.</div>
 
     <!-- Hidden URL field — will be populated by Cloudinary upload when configured -->
     <input type="hidden" id="t1_image_url" value="">
@@ -307,7 +293,7 @@
     <hr class="divider">
     <div class="scale-question"><p>1. The image made me look more physically attractive.</p><div class="scale-row" data-q="mc1"><button class="scale-btn" onclick="selectScale(this,'mc1',1)">1</button><button class="scale-btn" onclick="selectScale(this,'mc1',2)">2</button><button class="scale-btn" onclick="selectScale(this,'mc1',3)">3</button><button class="scale-btn" onclick="selectScale(this,'mc1',4)">4</button><button class="scale-btn" onclick="selectScale(this,'mc1',5)">5</button></div></div>
     <div class="scale-question"><p>2. The image had digital enhancements applied (e.g. skin smoothing, facial refinement).</p><div class="scale-row" data-q="mc2"><button class="scale-btn" onclick="selectScale(this,'mc2',1)">1</button><button class="scale-btn" onclick="selectScale(this,'mc2',2)">2</button><button class="scale-btn" onclick="selectScale(this,'mc2',3)">3</button><button class="scale-btn" onclick="selectScale(this,'mc2',4)">4</button><button class="scale-btn" onclick="selectScale(this,'mc2',5)">5</button></div></div>
-    <div class="scale-question"><p>3. The image was primarily for entertainment rather than attractiveness enhancement.</p><div class="scale-row" data-q="mc3"><button class="scale-btn" onclick="selectScale(this,'mc3',1)">1</button><button class="scale-btn" onclick="selectScale(this,'mc3',2)">2</button><button class="scale-btn" onclick="selectScale(this,'mc3',3)">3</button><button class="scale-btn" onclick="selectScale(this,'mc3',4)">4</button><button class="scale-btn" onclick="selectScale(this,'mc3',5)">5</button></div></div>
+    <div class="scale-question"><p>3. The image changed how I look without making me look better.</p><div class="scale-row" data-q="mc3"><button class="scale-btn" onclick="selectScale(this,'mc3',1)">1</button><button class="scale-btn" onclick="selectScale(this,'mc3',2)">2</button><button class="scale-btn" onclick="selectScale(this,'mc3',3)">3</button><button class="scale-btn" onclick="selectScale(this,'mc3',4)">4</button><button class="scale-btn" onclick="selectScale(this,'mc3',5)">5</button></div></div>
     <div class="scale-question"><p>4. The image appeared digitally altered.</p><div class="scale-row" data-q="mc4"><button class="scale-btn" onclick="selectScale(this,'mc4',1)">1</button><button class="scale-btn" onclick="selectScale(this,'mc4',2)">2</button><button class="scale-btn" onclick="selectScale(this,'mc4',3)">3</button><button class="scale-btn" onclick="selectScale(this,'mc4',4)">4</button><button class="scale-btn" onclick="selectScale(this,'mc4',5)">5</button></div></div>
     <div class="scale-question"><p>5. The image looked natural and unmodified.</p><div class="scale-row" data-q="mc5"><button class="scale-btn" onclick="selectScale(this,'mc5',1)">1</button><button class="scale-btn" onclick="selectScale(this,'mc5',2)">2</button><button class="scale-btn" onclick="selectScale(this,'mc5',3)">3</button><button class="scale-btn" onclick="selectScale(this,'mc5',4)">4</button><button class="scale-btn" onclick="selectScale(this,'mc5',5)">5</button></div></div>
   </div>
@@ -362,7 +348,7 @@
   <div class="card" style="text-align:center;">
     <div style="font-size:48px;margin-bottom:12px;">✓</div>
     <h2>Trial 1 Complete</h2>
-    <div class="success-box" style="text-align:left;margin-top:16px;">Trial 1 responses saved. You will now complete <strong>Trial 2</strong> — the same procedure but <strong>without any filter</strong>. This serves as your personal no-filter baseline.</div>
+    <div class="success-box" style="text-align:left;margin-top:16px;">Trial 1 responses saved. <strong>Trial 2 is the same procedure without any filter.</strong></div>
     <div class="warning-box" style="text-align:left;">⏸ Please take a short <strong>2-minute rest</strong> before continuing.</div>
     <div class="timer-display" id="restTimer">2:00</div>
     <button class="btn btn-secondary" id="restStartBtn" onclick="startTimer('restTimer','restStartBtn','toTrial2Btn',120)">▶ Start Rest Timer</button>
@@ -372,11 +358,11 @@
 
 <!-- ============ STEP 11: TRIAL 2 — Selfie + Timer ============ -->
 <div id="step11" class="hidden">
-  <div class="trial-banner" style="background:#059669;">⬡ TRIAL 2 OF 2 — No-Filter Baseline (All Participants)</div>
+  <div class="trial-banner" style="background:#059669;">⬡ TRIAL 2 OF 2 — No-Filter Trial</div>
   <div class="card">
     <h2>No-Filter Task</h2>
     <p>Take a selfie using <strong>this device's front-facing camera only</strong> — no AR filter or application. Then view your image for 60 seconds.</p>
-    <div class="info-box">Use the front-facing camera directly. Do not open Instagram, TikTok, or any other app.</div>
+    <div class="info-box">Use the front-facing camera directly. Do not open Snapchat or any other app.</div>
     <input type="hidden" id="t2_image_url" value="">
     <div class="upload-area" id="uploadArea2" onclick="document.getElementById('selfieInput2').click()">
       <input type="file" id="selfieInput2" accept="image/*" class="hidden" onchange="handleUpload(2)">
@@ -399,7 +385,10 @@
     <p style="font-size:12px;color:#6B7280;font-style:italic;">1 = Strongly Disagree · 3 = Neutral · 5 = Strongly Agree</p>
     <hr class="divider">
     <div class="scale-question"><p>1. The image made me look more physically attractive.</p><div class="scale-row" data-q="t2mc1"><button class="scale-btn" onclick="selectScale(this,'t2mc1',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mc1',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mc1',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mc1',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mc1',5)">5</button></div></div>
-    <div class="scale-question"><p>2. The image looked natural and unmodified.</p><div class="scale-row" data-q="t2mc2"><button class="scale-btn" onclick="selectScale(this,'t2mc2',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mc2',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mc2',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mc2',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mc2',5)">5</button></div></div>
+    <div class="scale-question"><p>2. The image had digital enhancements applied (e.g. skin smoothing, facial refinement).</p><div class="scale-row" data-q="t2mc2"><button class="scale-btn" onclick="selectScale(this,'t2mc2',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mc2',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mc2',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mc2',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mc2',5)">5</button></div></div>
+    <div class="scale-question"><p>3. The image changed how I look without making me look better.</p><div class="scale-row" data-q="t2mc3"><button class="scale-btn" onclick="selectScale(this,'t2mc3',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mc3',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mc3',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mc3',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mc3',5)">5</button></div></div>
+    <div class="scale-question"><p>4. The image appeared digitally altered.</p><div class="scale-row" data-q="t2mc4"><button class="scale-btn" onclick="selectScale(this,'t2mc4',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mc4',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mc4',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mc4',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mc4',5)">5</button></div></div>
+    <div class="scale-question"><p>5. The image looked natural and unmodified.</p><div class="scale-row" data-q="t2mc5"><button class="scale-btn" onclick="selectScale(this,'t2mc5',1)">1</button><button class="scale-btn" onclick="selectScale(this,'t2mc5',2)">2</button><button class="scale-btn" onclick="selectScale(this,'t2mc5',3)">3</button><button class="scale-btn" onclick="selectScale(this,'t2mc5',4)">4</button><button class="scale-btn" onclick="selectScale(this,'t2mc5',5)">5</button></div></div>
   </div>
   <button class="btn btn-secondary" onclick="goToT2Sub(0)" style="margin-bottom:8px;">← Back</button>
   <button class="btn btn-primary" onclick="goToT2Sub(2)">Continue to Appearance Self-Esteem →</button>
@@ -458,6 +447,7 @@
   </div>
   <div class="card">
     <h3>Purpose of This Study</h3>
+    <p>At the start, this study was described as being about social media use and well-being. Its specific focus was how different AR filters affect how people feel about their appearance. We did not mention this earlier so that it would not influence your answers.</p>
     <p>This research examined whether exposure to beautifying AR filters, non-beautifying AR filters, or no filter produces measurable differences in <strong>state appearance self-esteem</strong> and <strong>appearance satisfaction</strong> among young adults in Malaysia.</p>
     <p>The Appearance Self-Esteem subscale of the State Self-Esteem Scale (Heatherton &amp; Polivy, 1991) and the Appearance Evaluation subscale of the MBSRQ (Cash, 2000) were used to capture your immediate responses across both trials.</p>
     <div class="warning-box">AR filters apply digital enhancements that <strong>do not represent realistic appearance standards</strong>. Any temporary feelings of appearance-related discomfort following this study are expected to resolve shortly.</div>
@@ -496,14 +486,12 @@ const stepLabels = {
   8:  'Step 8 of 11 — Trial 1: Appearance Self-Esteem',
   9:  'Step 9 of 11 — Trial 1: Appearance Satisfaction',
   10: 'Step 10 of 11 — Rest Period',
-  11: 'Step 11 of 11 — Trial 2: No-Filter Baseline',
+  11: 'Step 11 of 11 — Trial 2: No-Filter Trial',
   12: 'Study Complete — Debriefing'
 };
 
 let participantCode = '';
 let conditionNumber = '';
-let assignedCondition = '';
-
 // Shared ID so both rows can be linked in the spreadsheet
 const participantId = 'P' + Date.now() + Math.random().toString(36).slice(2, 6).toUpperCase();
 
@@ -519,12 +507,6 @@ function startStudy() {
 
   participantCode = codeInput.value;
   conditionNumber = conditionInput.value;
-  const conditionMap = {
-    '1': 'a',
-    '2': 'b',
-    '3': 'c'
-  };
-  assignedCondition = conditionMap[conditionNumber];
   document.getElementById('researcherSetup').classList.add('hidden');
   goTo(1);
 }
@@ -549,13 +531,14 @@ function goTo(n) {
 }
 
 function showCondition() {
-  document.querySelectorAll('.condition-card').forEach(c => c.classList.remove('active'));
-  document.getElementById('cond-' + assignedCondition).classList.add('active');
+  document.getElementById('assignedConditionText').textContent =
+    'You have been assigned to Condition ' + conditionNumber + ' for Trial 1. Please follow the instructions on the next screen.';
 }
 
 function configureTrial1Task() {
   const isControl = conditionNumber === '3';
   document.getElementById('trial1Qr').classList.toggle('hidden', isControl);
+  document.getElementById('trial1NoFilterNote').classList.toggle('hidden', !isControl);
   document.getElementById('stepLabel').textContent = isControl
     ? 'Step 5 of 11 — Trial 1: No-Filter Control'
     : stepLabels[5];
@@ -566,9 +549,12 @@ function configureTrial1Task() {
     ? 'Complete the No-Filter Task'
     : 'Complete the Filter Task';
   document.getElementById('trial1Step1').innerHTML = isControl
-    ? '<strong>Step 1:</strong> Use the device\'s front-facing camera without opening Instagram, TikTok, or applying any filter.'
-    : '<strong>Step 1:</strong> Scan the QR code above — this opens your assigned AR filter directly in Instagram or TikTok.';
-  document.getElementById('trial1Step2').innerHTML = '<strong>Step 2:</strong> Ensure your full face is clearly visible in good lighting. Take <strong>one selfie</strong>.';
+    ? '<strong>Step 1:</strong> Take a selfie using this device\'s front-facing camera only — no AR filter or application. Then view your image for 60 seconds.'
+    : '<strong>Step 1:</strong> Scan the QR code above — this opens your assigned filter directly in Snapchat.';
+  document.getElementById('trial1Step2').innerHTML = isControl
+    ? '<strong>Step 2:</strong> Upload your selfie below for compliance verification.'
+    : '<strong>Step 2:</strong> Ensure your full face is clearly visible in good lighting. Take <strong>one selfie</strong>.';
+  document.getElementById('trial1Step3').classList.toggle('hidden', isControl);
   document.getElementById('trial1Step3').innerHTML = '<strong>Step 3:</strong> Save the selfie to your camera roll, then upload it below for compliance verification.';
 }
 
@@ -591,15 +577,25 @@ function togglePlatform(el) {
   el.classList.toggle('selected');
 }
 
+function toggleOtherEthnicity() {
+  const isOther = document.getElementById('ethnicity').value === 'Others';
+  const input = document.getElementById('ethnicityOther');
+  input.classList.toggle('hidden', !isOther);
+  input.required = isOther;
+}
+
 function getDemographics() {
   const platforms = Array.from(
     document.querySelectorAll('#platformGrid .checkbox-chip.selected')
   ).map(el => el.textContent.trim()).join('; ') || '(none selected)';
 
+  const selectedEthnicity = document.getElementById('ethnicity').value;
+  const specifiedEthnicity = document.getElementById('ethnicityOther').value.trim();
+
   return {
     age:         document.getElementById('age').value,
     gender:      document.getElementById('gender').value,
-    nationality: document.getElementById('nationality').value,
+    ethnicity:   selectedEthnicity === 'Others' ? 'Others: ' + specifiedEthnicity : selectedEthnicity,
     education:   document.getElementById('education').value,
     filterFreq:  document.getElementById('filterFreq').value,
     platforms,
@@ -707,13 +703,12 @@ function startTimer(displayId, startBtnId, nextBtnId, seconds) {
 //
 // Sheet1 column headers (id & timestamp are auto-generated by Apps Script):
 //   id | timestamp | participant_id | participant_code | trial | age | gender |
-//   nationality | education | filterFreq | platforms | condition |
+//   ethnicity | education | filterFreq | platforms | condition |
 //   mc1 | mc2 | mc3 | mc4 | mc5 |
 //   sses1 | sses2 | sses3 | sses4 | sses5 | sses6 | sses7 |
 //   mbsrq1 | mbsrq2 | mbsrq3 | mbsrq4 | mbsrq5 | mbsrq6 | mbsrq7 |
 //   image_url | upload_timestamp
 //
-// Trial2 mc2–mc4 are intentionally blank (only mc1 & mc5 asked in Trial 2).
 // ─────────────────────────────────────────────────────────────────────────────
 function buildPayload(trialLabel, trialData) {
   const demo = getDemographics();
@@ -726,7 +721,7 @@ function buildPayload(trialLabel, trialData) {
   // Demographics — repeated on both rows for self-contained analysis
   fd.append('age',         demo.age);
   fd.append('gender',      demo.gender);
-  fd.append('nationality', demo.nationality);
+  fd.append('ethnicity',   demo.ethnicity);
   fd.append('education',   demo.education);
   fd.append('filterFreq',  demo.filterFreq);
   fd.append('platforms',   demo.platforms);
@@ -792,9 +787,9 @@ function submitTrial1() {
 
 function submitTrial2() {
   const data = {
-    // Manipulation check (2 items only for Trial 2)
-    mc1: responses.t2mc1 || '',
-    mc2: responses.t2mc2 || '',
+    // Manipulation check (all 5 items)
+    mc1: responses.t2mc1 || '', mc2: responses.t2mc2 || '',
+    mc3: responses.t2mc3 || '', mc4: responses.t2mc4 || '', mc5: responses.t2mc5 || '',
     // SSES-AE
     sses1: responses.t2sses1 || '', sses2: responses.t2sses2 || '',
     sses3: responses.t2sses3 || '', sses4: responses.t2sses4 || '',
