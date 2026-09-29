@@ -127,7 +127,6 @@
         <option value="">— Select condition —</option>
         <option value="1">1 — Beautifying Filter</option>
         <option value="2">2 — Non-Beautifying Filter</option>
-        <option value="3">3 — No-Filter Control</option>
       </select>
     </div>
   </div>
@@ -145,7 +144,7 @@
       <span class="badge">📱 Researcher device provided</span>
       <span class="badge">🔒 Anonymous questionnaire responses</span>
     </div>
-    <div class="info-box"><strong>What will you do?</strong> You will be assigned to one of three conditions and complete two short trials. In each trial you will take one selfie on the study phone, view it for 60 seconds, and answer short questionnaires.</div>
+    <div class="info-box"><strong>What will you do?</strong> You will be assigned to one of two filter conditions and complete two short trials. In each trial you will take one selfie on the study phone, view it for 60 seconds, and answer short questionnaires.</div>
     <div class="info-box"><strong>Selfie verification:</strong> You will be asked to upload your selfie photograph after each trial to confirm the task was completed. Your photograph will be retained securely as part of the research record, with your informed consent.</div>
     <div class="info-box"><strong>Risks:</strong> Minimal. You may experience mild, temporary appearance-related self-consciousness. A full debriefing will be provided after the study. You may withdraw at any time without penalty.</div>
     <p style="font-size:12px;color:#6B7280;margin-top:8px;"><strong>Contact:</strong> Principal Investigator — Ayisha Abdul Rauf, Sunway University Malaysia</p>
@@ -251,8 +250,6 @@
     <p id="trial1Step1" style="font-size:13px;"><strong>Step 1:</strong> Scan the QR code above — this opens your assigned filter directly in Snapchat.</p>
     <p id="trial1Step2" style="font-size:13px;"><strong>Step 2:</strong> Ensure your full face is clearly visible in good lighting. Take <strong>one selfie</strong>.</p>
     <p id="trial1Step3" style="font-size:13px;"><strong>Step 3:</strong> Save the selfie to your camera roll, then upload it below for compliance verification.</p>
-    <div class="info-box hidden" id="trial1NoFilterNote">Use the front-facing camera directly. Do not open Snapchat or any other app.</div>
-
     <!-- Hidden URL field — will be populated by Cloudinary upload when configured -->
     <input type="hidden" id="t1_image_url" value="">
 
@@ -448,7 +445,7 @@
   <div class="card">
     <h3>Purpose of This Study</h3>
     <p>At the start, this study was described as being about social media use and well-being. Its specific focus was how different AR filters affect how people feel about their appearance. We did not mention this earlier so that it would not influence your answers.</p>
-    <p>This research examined whether exposure to beautifying AR filters, non-beautifying AR filters, or no filter produces measurable differences in <strong>state appearance self-esteem</strong> and <strong>appearance satisfaction</strong> among young adults in Malaysia.</p>
+    <p>This research examined whether exposure to beautifying or non-beautifying AR filters produces measurable differences in <strong>state appearance self-esteem</strong> and <strong>appearance satisfaction</strong> among young adults in Malaysia. Trial 2 provided a shared no-filter baseline for comparison.</p>
     <p>The Appearance Self-Esteem subscale of the State Self-Esteem Scale (Heatherton &amp; Polivy, 1991) and the Appearance Evaluation subscale of the MBSRQ (Cash, 2000) were used to capture your immediate responses across both trials.</p>
     <div class="warning-box">AR filters apply digital enhancements that <strong>do not represent realistic appearance standards</strong>. Any temporary feelings of appearance-related discomfort following this study are expected to resolve shortly.</div>
     <div class="info-box">Your selfie photographs are stored securely on a password-encrypted external hard drive and will be permanently deleted upon completion of the research, in accordance with the university's data retention policy and your informed consent.</div>
@@ -536,26 +533,8 @@ function showCondition() {
 }
 
 function configureTrial1Task() {
-  const isControl = conditionNumber === '3';
-  document.getElementById('trial1Qr').classList.toggle('hidden', isControl);
-  document.getElementById('trial1NoFilterNote').classList.toggle('hidden', !isControl);
-  document.getElementById('stepLabel').textContent = isControl
-    ? 'Step 5 of 11 — Trial 1: No-Filter Control'
-    : stepLabels[5];
-  document.querySelector('#step5 .trial-banner').textContent = isControl
-    ? '⬡ TRIAL 1 OF 2 — No-Filter Control Task'
-    : '⬡ TRIAL 1 OF 2 — Filter Exposure Task';
-  document.querySelector('#step5 h2').textContent = isControl
-    ? 'Complete the No-Filter Task'
-    : 'Complete the Filter Task';
-  document.getElementById('trial1Step1').innerHTML = isControl
-    ? '<strong>Step 1:</strong> Take a selfie using this device\'s front-facing camera only — no AR filter or application. Then view your image for 60 seconds.'
-    : '<strong>Step 1:</strong> Scan the QR code above — this opens your assigned filter directly in Snapchat.';
-  document.getElementById('trial1Step2').innerHTML = isControl
-    ? '<strong>Step 2:</strong> Upload your selfie below for compliance verification.'
-    : '<strong>Step 2:</strong> Ensure your full face is clearly visible in good lighting. Take <strong>one selfie</strong>.';
-  document.getElementById('trial1Step3').classList.toggle('hidden', isControl);
-  document.getElementById('trial1Step3').innerHTML = '<strong>Step 3:</strong> Save the selfie to your camera roll, then upload it below for compliance verification.';
+  document.getElementById('trial1Qr').classList.remove('hidden');
+  document.getElementById('stepLabel').textContent = stepLabels[5];
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

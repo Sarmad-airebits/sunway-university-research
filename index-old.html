@@ -141,10 +141,9 @@ input#natOtherVal {
       <div class="sc"><div class="snum" id="stB">0</div><div class="slbl">Beautifying</div></div>
       <div class="sc"><div class="snum" id="stN">0</div><div class="slbl">Non-Beautifying</div></div>
     </div>
-    <div class="mr"><span>Control (no-filter)</span><span id="stNF">0</span></div>
-    <div class="mr"><span>Target sample</span><span>180 participants (60 per condition)</span></div>
+    <div class="mr"><span>Target sample</span><span>120 participants (60 per condition)</span></div>
     <div class="mr"><span>Design</span><span>2×2 Mixed Factorial</span></div>
-    <div class="mr"><span>Trial 1</span><span>Assigned condition (beauty / non-beauty / no-filter)</span></div>
+    <div class="mr"><span>Trial 1</span><span>Assigned filter condition (beauty / non-beauty)</span></div>
     <div class="mr"><span>Trial 2</span><span>No-filter baseline</span></div>
     <div class="mr"><span>Selfie photos</span><span>Deleted after compliance check</span></div>
     <div class="mr"><span>Storage</span><span>Qualtrics encrypted server</span></div>
@@ -164,7 +163,7 @@ input#natOtherVal {
     <div class="mr"><span>Participant ID</span><span>Auto-generated code</span></div>
     <div class="mr"><span>Selfie photos</span><span>Deleted after compliance check</span></div>
     <div class="mr"><span>Timestamps</span><span>Recorded per trial</span></div>
-    <div class="mr"><span>Condition assigned</span><span>Beautifying / Non-Beautifying / No-Filter</span></div>
+    <div class="mr"><span>Condition assigned</span><span>Beautifying / Non-Beautifying</span></div>
     <div class="mr"><span>SSES (20 items)</span><span>Stored per trial</span></div>
     <div class="mr"><span>MBSRQ-AE (7 items)</span><span>Stored per trial</span></div>
     <div class="mr"><span>Retention</span><span>5 years (university ethics policy)</span></div>
@@ -192,7 +191,7 @@ input#natOtherVal {
   <h1>AR Filters &amp; Self-Perception Study</h1>
   <p>You are invited to participate in a psychology research study at Sunway University examining how augmented reality (AR) social media filters influence self-perception and appearance satisfaction among young adults in Malaysia.</p>
   <div class="ib">⏱ ~20–25 min &nbsp;|&nbsp; 🔁 2 Trials &nbsp;|&nbsp; 📱 Smartphone required &nbsp;|&nbsp; 🔒 Fully anonymous</div>
-  <p><strong>What will you do?</strong> You will be randomly assigned to one of three conditions: a beautifying AR filter, a non-beautifying AR filter, or a no-filter control. You will complete <strong>two trials</strong> — Trial 1 using your assigned condition, and Trial 2 without any filter. Questionnaires are completed after each trial.</p>
+  <p><strong>What will you do?</strong> You will be randomly assigned to one of two conditions: a beautifying AR filter or a non-beautifying AR filter. You will complete <strong>two trials</strong> — Trial 1 using your assigned condition, and Trial 2 without any filter. Questionnaires are completed after each trial.</p>
   <p><strong>Selfie verification:</strong> You will be asked to upload your selfie after each trial to confirm the task was completed. Photos are deleted immediately after verification — never stored or shared.</p>
   <p><strong>Risks:</strong> Minimal. You may withdraw at any time without penalty.</p>
   <p><strong>Contact:</strong> Principal Investigator — research@sunway.edu.my</p>
@@ -290,17 +289,10 @@ input#natOtherVal {
         <span>Entertainment-oriented effect — does not enhance attractiveness</span>
       </div>
     </div>
-    <div class="cond-card" id="card-c">
-      <div class="cond-icon">○</div>
-      <div class="cond-info">
-        <strong>No Filter — Control <span class="you-badge hidden" id="you-c">YOUR CONDITION</span></strong>
-        <span>No AR filter applied — natural, unmodified appearance</span>
-      </div>
-    </div>
   </div>
 
   <div class="ib" id="condMsg"></div>
-  <div class="ib">📋 <strong>Study overview:</strong> Trial 1 = your assigned condition above &nbsp;·&nbsp; Trial 2 = no-filter baseline &nbsp;·&nbsp; Questionnaires after each trial &nbsp;·&nbsp; Your condition and timestamps are recorded for validity.</div>
+  <div class="ib">📋 <strong>Study overview:</strong> Trial 1 = your assigned filter condition above &nbsp;·&nbsp; Trial 2 = shared no-filter baseline &nbsp;·&nbsp; Questionnaires after each trial &nbsp;·&nbsp; Your condition and timestamps are recorded for validity.</div>
   <div class="br">
     <button class="btn bo" onclick="goTo(2)">← Back</button>
     <button class="btn bp" onclick="startTrial(1)">Begin Trial 1 →</button>
@@ -455,7 +447,7 @@ input#natOtherVal {
 </div>
 
 <script>
-let _store = {t:0,c:0,b:0,n:0,nf:0};
+let _store = {t:0,c:0,b:0,n:0};
 function getD(){return _store;}
 function setD(d){_store=Object.assign({},d);}
 function updC(){
@@ -465,10 +457,9 @@ function updC(){
   document.getElementById('stC').textContent=d.c;
   document.getElementById('stB').textContent=d.b;
   document.getElementById('stN').textContent=d.n;
-  document.getElementById('stNF').textContent=d.nf||0;
 }
 function openCnt(){updC();document.getElementById('cntM').classList.remove('hidden');}
-function resetCnt(){setD({t:0,c:0,b:0,n:0,nf:0});updC();}
+function resetCnt(){setD({t:0,c:0,b:0,n:0});updC();}
 
 const CIRC=326.73;
 let cond=null, trial=1, mTmr=null, fbTmr=null;
@@ -505,27 +496,25 @@ function chkC(){
 
 function assignAndGo(){
   const d=getD(); d.t++; setD(d);
-  const r=Math.random();
-  cond = r<0.333 ? 'beauty' : r<0.666 ? 'non' : 'control';
+  cond = Math.random() < 0.5 ? 'beauty' : 'non';
 
   // Reset all cards
-  ['card-b','card-n','card-c'].forEach(id=>{
+  ['card-b','card-n'].forEach(id=>{
     document.getElementById(id).classList.remove('assigned');
   });
-  ['you-b','you-n','you-c'].forEach(id=>{
+  ['you-b','you-n'].forEach(id=>{
     document.getElementById(id).classList.add('hidden');
   });
 
   // Highlight assigned
-  const map={beauty:'b', non:'n', control:'c'};
+  const map={beauty:'b', non:'n'};
   const k=map[cond];
   document.getElementById('card-'+k).classList.add('assigned');
   document.getElementById('you-'+k).classList.remove('hidden');
 
   const msgs={
     beauty:'✦ You have been assigned to the <strong>Beautifying Filter</strong> condition. The researcher will provide you with a QR code to access your assigned filter on Instagram or TikTok.',
-    non:'◦ You have been assigned to the <strong>Non-Beautifying Filter</strong> condition. The researcher will provide you with a QR code to access your assigned filter on Instagram or TikTok.',
-    control:'○ You have been assigned to the <strong>No-Filter Control</strong> condition. You will take a selfie using your phone\'s camera without applying any AR filter.'
+    non:'◦ You have been assigned to the <strong>Non-Beautifying Filter</strong> condition. The researcher will provide you with a QR code to access your assigned filter on Instagram or TikTok.'
   };
   document.getElementById('condMsg').innerHTML=msgs[cond];
   goTo(3);
@@ -534,8 +523,7 @@ function assignAndGo(){
 function startTrial(n){
   trial=n;
   const isTrial2=(n===2);
-  const isControl=(cond==='control');
-  const showQR=!isTrial2 && !isControl;
+  const showQR=!isTrial2;
 
   // Reset upload
   document.getElementById('uz1').classList.remove('hf');
@@ -550,7 +538,7 @@ function startTrial(n){
 
   // Labels
   const tl='Trial '+n+' of 2';
-  document.getElementById('t4tag').textContent=tl+(isTrial2?' — No-Filter Task':isControl?' — No-Filter Task':' — Filter Task');
+  document.getElementById('t4tag').textContent=tl+(isTrial2?' — No-Filter Task':' — Filter Task');
   document.getElementById('t5tag').textContent=tl+' — Viewing Period';
   document.getElementById('t6tag').textContent=tl+' — Manipulation Check';
   document.getElementById('t7tag').textContent=tl+' — Self-Perception (SSES)';
@@ -560,10 +548,6 @@ function startTrial(n){
   if(isTrial2){
     document.getElementById('t4h').textContent='Trial 2: Take a No-Filter Selfie';
     document.getElementById('t4desc').textContent='For this trial, use your phone\'s front camera without applying any AR filter. Take one selfie in similar lighting to Trial 1.';
-    document.getElementById('step1txt').textContent='Open your phone\'s front-facing camera without activating any filter.';
-  } else if(isControl){
-    document.getElementById('t4h').textContent='No-Filter Task';
-    document.getElementById('t4desc').textContent='You have been assigned to the no-filter control condition. Use your phone\'s front camera without applying any AR filter.';
     document.getElementById('step1txt').textContent='Open your phone\'s front-facing camera without activating any filter.';
   } else {
     const condLabel=cond==='beauty'?'Beautifying':'Non-Beautifying';
@@ -692,10 +676,9 @@ function submitTrial(){
   } else {
     const d=getD(); d.c++;
     if(cond==='beauty') d.b++;
-    else if(cond==='non') d.n++;
-    else d.nf=(d.nf||0)+1;
+    else d.n++;
     setD(d); updC();
-    const condLabels={beauty:'Beautifying Filter condition',non:'Non-Beautifying Filter condition',control:'No-Filter Control condition'};
+    const condLabels={beauty:'Beautifying Filter condition',non:'Non-Beautifying Filter condition'};
     document.getElementById('debCond').textContent=condLabels[cond];
     setProgress(100,'Complete','Debriefing');
     goTo(10);
